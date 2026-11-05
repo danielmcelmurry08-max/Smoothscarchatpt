@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "properties": {
+    "Reference": {
+      "type": "string"
+    },
+    "SubmittedAt": {
+      "type": "string"
+    },
+    "FullName": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "string"
+    },
+    "ClinicalRole": {
+      "type": "string"
+    },
+    "Practice": {
+      "type": "string"
+    },
+    "Region": {
+      "type": "string"
+    },
+    "ProcedureFocus": {
+      "type": "string"
+    },
+    "ProductInterest": {
+      "type": "string"
+    },
+    "Comments": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string"
+    },
+    "FollowUpDate": {
+      "type": "string"
+    },
+    "FollowUpNotes": {
+      "type": "string"
+    },
+    "Owner": {
+      "type": "string"
+    },
+    "Source": {
+      "type": "string"
+    },
+    "Medium": {
+      "type": "string"
+    },
+    "Campaign": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "Reference",
+    "FullName",
+    "Email"
+  ]
+}

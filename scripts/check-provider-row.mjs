@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { providerRow } from '../lib/provider-row.mjs';
+const submission = {provider_workflow:'provider-access', reference:'BIO-example', name:'Example Provider',email:'example@example.org',practice:'Example Practice',test:'false'};
+const row = providerRow(submission);
+assert.equal(row.Reference, submission.reference);
+assert.equal(row.Email, submission.email);
+assert.equal(row.Status, 'New');
+assert.equal(row.FollowUpNotes, '');
+assert.equal(providerRow({...submission, test:'true'}), null);
+assert.equal(providerRow({...submission, provider_workflow:'provider-test'}), null);
+assert.equal(providerRow({...submission, website:'spam'}), null);
+assert.equal(providerRow({...submission, comments:' =HYPERLINK("example")'}).Comments, '\' =HYPERLINK("example")');
+assert.throws(()=>providerRow({...submission,reference:''}));
+console.log('Validated provider row mapping, test exclusion, required references, and Excel formula safety.');
