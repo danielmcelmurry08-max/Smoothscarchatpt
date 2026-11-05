@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import handler from '../netlify/functions/provider-excel.mts';
+const event={data:{provider_workflow:'provider-access',reference:'BIO-fixture',name:'Fixture',email:'fixture@example.org',test:'false'}};
+const originalFetch=globalThis.fetch;
+let calls=[];
+globalThis.Netlify={context:{deploy:{context:'production'}},env:{get:()=> 'https://example.api.powerplatform.com/fixture'}};
+globalThis.fetch=async (url,options)=>{calls.push(JSON.parse(options.body));return new Response(null,{status:200});};
+try {
+ await handler.formSubmitted(event);
+ assert.equal(calls.length,1);
+ assert.equal(calls[0].Reference,'BIO-fixture');
+ await handler.formSubmitted({data:{...event.data,test:'true'}});
+ assert.equal(calls.length,1);
+ Netlify.context.deploy.context='deploy-preview';
+ await handler.formSubmitted(event);
+ assert.equal(calls.length,1);
+ Netlify.context.deploy.context='production';
+ Netlify.env.get=()=>undefined;
+ await assert.rejects(handler.formSubmitted(event),/not configured/);
+ Netlify.env.get=()=> 'invalid-private-flow-setting';
+ await assert.rejects(handler.formSubmitted(event),err=>err.message==='Excel prospecting flow URL is invalid.');
+ Netlify.env.get=()=> 'https://example.org/fixture';
+ await assert.rejects(handler.formSubmitted(event),/Microsoft Power Automate HTTPS endpoint/);
+ Netlify.env.get=()=> 'https://example.api.powerplatform.com/fixture';
+ globalThis.fetch=async()=>new Response(null,{status:500});
+ await assert.rejects(handler.formSubmitted(event),/HTTP 500/);
+ globalThis.fetch=async()=>{throw Error('sensitive endpoint information');};
+ await assert.rejects(handler.formSubmitted(event),err=>!err.message.includes('sensitive'));
+ console.log('Validated Excel delivery, preview/test exclusions, and safe failure handling with mocked HTTP.');
+} finally {globalThis.fetch=originalFetch;delete globalThis.Netlify;}
