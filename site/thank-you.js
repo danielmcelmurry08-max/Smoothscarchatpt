@@ -7,9 +7,13 @@
   const test=params.get('test')==='1'||!!(receipt&&receipt.test);
   if(/^BIO-[A-Z0-9]{1,16}$/.test(ref)){const el=$('#ref');el.textContent=(test?'Test request · ':'')+'Your reference number: '+ref;el.classList.remove('hidden');}
   if(receipt&&receipt.name){const first=String(receipt.name).trim().split(/\s+/)[0].slice(0,40);if(first)$('#title').textContent='Thank you, '+first+'!';}
+  if (receipt && !test && receipt.reference === params.get('ref')) {
+    const offer = document.createElement('p');
+    offer.textContent = 'Your first-purchase code is SMOOTH25. Quote it to the SmoothScar team when ordering to receive 25% off.';
+    document.querySelector('#ref').after(offer);
+  }
   // Prefill the Calendly booking form with the details the prospect already entered.
   const cal=new URL('https://calendly.com/daniel-mcelmurry08/30min');
-  cal.searchParams.set('month','2026-11');
   cal.searchParams.set('hide_gdpr_banner','1');
   cal.searchParams.set('embed_type','Inline');
   cal.searchParams.set('embed_domain',location.hostname);
@@ -19,7 +23,7 @@
   if(receipt){
     const btn=$('#download');btn.classList.remove('hidden');
     btn.addEventListener('click',()=>{
-      const lines=['BioRNA provider access request','Reference: '+receipt.reference,'Submitted: '+new Date(receipt.submittedAt).toLocaleString(),'Name: '+receipt.name,'Email: '+receipt.email,'Practice: '+receipt.practice,'Product interest: '+receipt.product];
+      const lines=['Smooth Skin education event signup','Reference: '+receipt.reference,'Submitted: '+new Date(receipt.submittedAt).toLocaleString(),'Name: '+receipt.name,'Email: '+receipt.email,'Practice: '+receipt.practice,'Product interest: '+receipt.product,'Event date: TBD','Offer: 25% off first purchase. '+(test?'Test registration.':'Quote SMOOTH25 when ordering with our team.')+''];
       if(receipt.test)lines.push('Type: Test request');
       lines.push('','Book a call: https://calendly.com/daniel-mcelmurry08/30min','Questions? Contact helixbiodyne@rayesolutions.com');
       const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/plain'}));a.download='BioRNA-request-'+receipt.reference+'.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
