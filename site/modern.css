@@ -10,3 +10,5 @@
 #webinar-invite h2{font-size:2rem;line-height:1.1}
 #webinar-invite p{margin:1rem 0}
 #webinar-invite .dismiss{float:right;background:none;border:0;font-size:1.8rem;cursor:pointer}
+
+.comparison-stage.is-csection{aspect-ratio:4.8;max-height:none}.is-side-by-side .is-csection .compare-layer{aspect-ratio:4.8}.tablist{flex-wrap:wrap}
