@@ -61,11 +61,3 @@ let started=false;form.addEventListener('input',()=>{if(!started){started=true;t
 
 const requestedProduct=params.get('product');
 if(['BioRNA Antiscar','BioRNA-C'].includes(requestedProduct))document.querySelector('#product').value=requestedProduct;
-// Preserve campaign attribution when visitors explore a product before inquiring.
-try {
-  const keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
-  const incoming=Object.fromEntries(keys.filter(k=>params.has(k)).map(k=>[k,params.get(k).slice(0,200)]));
-  if(Object.keys(incoming).length)sessionStorage.setItem('smoothscar-attribution',JSON.stringify(incoming));
-  const attribution=JSON.parse(sessionStorage.getItem('smoothscar-attribution')||'{}');
-  for(const k of keys)if(typeof attribution[k]==='string')form.elements[k].value=attribution[k].slice(0,200);
-} catch {}

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node scripts/check.mjs && node scripts/check-provider-row.mjs && node --experimental-strip-types scripts/check-excel-function.mjs"
+    "test": "node scripts/check.mjs && node scripts/check-provider-row.mjs && node --experimental-strip-types scripts/check-excel-function.mjs && node scripts/check-search.mjs"
   },
   "engines": {
     "node": ">=20"
