@@ -12,3 +12,5 @@
 #webinar-invite .dismiss{float:right;background:none;border:0;font-size:1.8rem;cursor:pointer}
 
 .comparison-stage.is-csection{aspect-ratio:4.8;max-height:none}.is-side-by-side .is-csection .compare-layer{aspect-ratio:4.8}.tablist{flex-wrap:wrap}
+
+.price{font-size:20px}.price span{font-size:13px;color:var(--muted)}@media(max-width:600px){.product-page header nav{flex-wrap:wrap;gap:12px;padding:14px 20px}.product-page header .brand{font-size:25px}.product-page header .btn{width:100%}}
