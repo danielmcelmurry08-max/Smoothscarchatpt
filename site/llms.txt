@@ -1,0 +1,18 @@
+# SmoothScar
+
+> BioRNA scar-care product information and customer/provider inquiries.
+
+## Products
+- [BioRNA Daily](https://smoothscar.com/products/biorna-daily/): Seven single-use patches per box; review manufacturer instructions.
+- [BioRNA-C](https://smoothscar.com/products/biorna-c/): Eight single-use patches per box; review manufacturer instructions.
+
+## Helpful pages
+- [Provider partnerships](https://smoothscar.com/providers/): Request documentation and private quotes.
+- [Science guide](https://smoothscar.com/scar-care-science/): Distinguishes commercial product descriptions from SPARC-targeting siRNA research.
+- [Customer and provider inquiries](https://smoothscar.com/#apply): Request an order or product information. No payment is taken on the website.
+- [Site information](https://smoothscar.com/site-guide.json): Public product navigation and ordering facts.
+
+## Ordering
+Regular consumer price: USD375 per box. Current special: USD350 per box. SMOOTH20: 20% off the regular USD375 price, giving USD300 per box, for consumer first orders arranged with the team. No stacking. Provider pricing is quoted privately. Confirm availability, shipping, taxes, payment and return terms before ordering.
+
+Contact: helixbiodyne@rayesolutions.com

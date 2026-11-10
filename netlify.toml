@@ -12,7 +12,7 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
     Cross-Origin-Opener-Policy = "same-origin"
     # The script hash must match the inline <script> in site/index.html (verified by npm test).
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-toAvo4Vp7UGj/ZR4/dcUfzIVYPak0/5/5u08tccitY8='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://static.wixstatic.com; connect-src 'self'; frame-src https://calendly.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-G13lvBPqYoNb9j+r83MHQqpuzVX1co0R1nVKLGhTDxY=' 'sha256-HRcLNa9d86eKnsccDka8zfD9DW31nvw4bhvgm9YsDis=' 'sha256-bPyKs5DYd8ZALVI69qyYNTm/2+a6CbNVj6z4HICwO40=' 'sha256-wyrSIhPYKj/srslwFF/NlNfaTLIC/xASRLMNF9syaz0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://static.wixstatic.com; connect-src 'self'; frame-src https://calendly.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
 
 [[headers]]
   for = "/downloads/*"

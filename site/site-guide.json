@@ -1,0 +1,38 @@
+{
+  "name": "SmoothScar",
+  "url": "https://smoothscar.com/",
+  "description": "BioRNA scar-care product information and customer/provider inquiries.",
+  "contact": {
+    "email": "helixbiodyne@rayesolutions.com"
+  },
+  "pages": {
+    "home": "https://smoothscar.com/",
+    "products": [
+      "https://smoothscar.com/products/biorna-daily/",
+      "https://smoothscar.com/products/biorna-c/"
+    ],
+    "providers": "https://smoothscar.com/providers/",
+    "science": "https://smoothscar.com/scar-care-science/",
+    "inquiries": "https://smoothscar.com/#apply"
+  },
+  "consumer_pricing": {
+    "currency": "USD",
+    "unit": "box",
+    "regular": 375,
+    "special": 350,
+    "first_order": {
+      "code": "SMOOTH20",
+      "discount_percent": 20,
+      "base_price": 375,
+      "price": 300,
+      "terms": "Consumer first order only; no stacking; arranged by quote with the team."
+    }
+  },
+  "ordering": {
+    "method": "inquiry_and_quote",
+    "payment_on_site": false,
+    "availability": "Confirm with team",
+    "shipping_taxes_returns": "Confirm before order acceptance"
+  },
+  "evidence": "Commercial hydrolyzed RNA product descriptions and SPARC-targeting siRNA research are distinct. Review product-specific evidence and labeling."
+}
