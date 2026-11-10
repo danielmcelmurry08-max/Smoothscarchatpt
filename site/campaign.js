@@ -43,10 +43,18 @@ form.addEventListener('submit',async e=>{
     try{r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:encoded});}
     catch{throw Error('We couldn’t reach the server. Check your connection and try again.');}
     if(!r.ok)throw Error('Your request couldn’t be sent. Please try again or email helixbiodyne@rayesolutions.com.');
-    const receipt={reference,test:data.test,submittedAt:new Date().toISOString(),name:data.name,email:data.email,practice:data.practice,product:data.product,event:'Smooth Skin webinar',eventDate:'TBD',offer:'25% off first purchase'};
+    const receipt={reference,test:data.test,submittedAt:new Date().toISOString(),name:data.name,email:data.email,practice:data.practice,product:data.product,inquiryType:data.inquiry_type,event:'Product and provider inquiry',eventDate:'TBD',offer:'SMOOTH20: $300 per box from $375 regular; consumer first order; no stacking'};
+    if(!data.test)track('generate_lead',{inquiry_type:data.inquiry_type,product:data.product});
     try{sessionStorage.setItem('biorna-receipt',JSON.stringify(receipt));}catch{}
     location.assign('/thank-you?ref='+encodeURIComponent(reference)+(data.test?'&test=1':''));
     return;
   }catch(err){$('#form-error').textContent=err.message;submit.disabled=false;submit.textContent=submitLabel;}
 });
 window.addEventListener('pageshow',()=>{submit.disabled=false;submit.textContent=submitLabel;});
+
+function track(name,detail={}){window.dispatchEvent(new CustomEvent('smoothscar:analytics',{detail:{event:name,...detail}}));if(typeof window.gtag==='function')window.gtag('event',name,detail);}
+const inquiryType=document.querySelector('#inquiry-type');
+if(params.get('intent')==='provider')inquiryType.value='provider';
+document.querySelectorAll('[data-intent="provider"]').forEach(a=>a.addEventListener('click',()=>{inquiryType.value='provider';track('provider_inquiry_click');}));
+document.querySelectorAll('[data-product]').forEach(a=>a.addEventListener('click',()=>track('product_inquiry_click',{product:a.dataset.product})));
+let started=false;form.addEventListener('input',()=>{if(!started){started=true;track('inquiry_start',{inquiry_type:inquiryType.value});}});
