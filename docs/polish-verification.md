@@ -15,3 +15,7 @@ Chrome’s native zoom provides 340 and 454 CSS-pixel-wide responsive views. Thi
 ## Real material collection
 
 Customer and provider feedback forms collect honest private feedback and optional permission to request a later publication approval. They do not authorize automatic publication. New feedback notification delivery also needs confirmation. The downloadable Photo and Feedback Collection Kit contains the shot list, questions and exact permission wording. Real photos and genuine responses still require actual people; no feedback or product photos have been invented.
+
+## Post-deployment narrow-layout results
+
+After waiting for each page load, eight routes were checked at 340 CSS pixels: homepage, customer, provider, both product detail pages, About and both feedback pages. No horizontal overflow was measured; all three displayed images loaded through the image endpoint. Two header buttons were 42px tall, so the mobile minimum was raised to 44px. Illustration captions were also raised to 14px on small screens. This is browser reflow testing, not a claim of physical-phone or Instagram validation.
