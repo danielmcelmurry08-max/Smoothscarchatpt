@@ -1,3 +1,26 @@
-import assert from 'node:assert/strict';import {readFile,access} from 'node:fs/promises';const html=await readFile('site/index.html','utf8');const campaign=await readFile('site/campaign.js','utf8');for(const name of ['provider-access','provider-test'])assert.ok(html.includes('name=\"'+name+'\"'));assert.ok(campaign.includes("data.test?'provider-test':'provider-access'"));assert.ok(!html.includes('name=\"test\" checked'));for(const name of ['scar-concept'])await access('site/assets/'+name+'.webp');new Function(campaign);console.log('Validated forms, live/test routing, assets and browser JavaScript syntax.');
-assert.ok(html.includes('src="/campaign.js"'));
-{const ty=await readFile('site/thank-you.html','utf8');const js=await readFile('site/thank-you.js','utf8');const toml=await readFile('netlify.toml','utf8');assert.ok(campaign.includes("location.assign('/thank-you"),'Form must redirect to the thank-you page');assert.ok(ty.includes('calendly.com/daniel-mcelmurry08/30min')&&ty.includes('src="/thank-you.js"'));assert.ok(!/<script>/.test(ty),'Thank-you page must not use inline scripts (CSP)');assert.ok(toml.includes('frame-src https://calendly.com'),'CSP must allow the Calendly frame');new Function(js);console.log('Validated thank-you page, Calendly embed and redirect.');}
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const read=p=>readFile('site/'+p,'utf8');
+const [hub,customer,provider,daily,c,quote]=await Promise.all(['index.html','customer/index.html','provider/index.html','products/biorna-daily/index.html','products/biorna-c/index.html','quote.js'].map(read));
+assert.ok(!hub.includes('<form'));
+assert.ok(customer.includes('name="customer-quotes"'));
+assert.ok(provider.includes('name="provider-access"'));
+assert.ok(!customer.includes('name="role"')&&!customer.includes('name="practice"'));
+assert.ok(provider.includes('name="practice"')&&provider.includes('name="role"'));
+assert.ok(!provider.includes('SMOOTH20')&&!provider.includes('$350')&&!provider.includes('$300'));
+assert.ok(!daily.includes('SMOOTH20')&&!daily.includes('20%'));
+assert.ok(c.includes('SMOOTH20')&&c.includes('BioRNA-C only'));
+for(const section of ['hero','portfolio']){
+ const area=section==='hero'?customer.split('<section class="hero">')[1].split('</section>')[0]:customer.split('id="portfolio"')[1].split('</section>')[0];
+ assert.ok(!/\$\d|SMOOTH20/.test(area),'No prices in customer '+section);
+}
+for(const html of [hub,customer,provider,daily,c]){
+ assert.ok(!html.includes('25%'));
+ assert.ok(!/BioRNA Daily(?! \(Antiscar\))|BioRNA Antiscar/.test(html),'Full product name required');
+ assert.ok(html.includes('mailto:helixbiodyne@rayesolutions.com'));
+}
+new Function(quote);new Function(await read('webinar.js'));
+assert.ok(quote.includes("code.disabled=!on"));
+assert.ok(customer.includes('action="/customer-confirmation"'));
+assert.ok(provider.includes('action="/provider-confirmation"'));
+console.log('Validated audience separation, offer scope, hidden offer field, consumer price placement, full naming and quote destinations.');
