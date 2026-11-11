@@ -7,7 +7,8 @@
   "pages": {
     "customer": "https://smoothscar.com/customer/",
     "provider": "https://smoothscar.com/provider/",
-    "science": "https://smoothscar.com/scar-care-science/"
+    "science": "https://smoothscar.com/scar-care-science/",
+    "about": "https://smoothscar.com/about/"
   },
   "products": [
     {
@@ -29,5 +30,6 @@
     "date": "TBD",
     "signup": "https://smoothscar.com/customer/#webinar",
     "offer": "BioRNA-C first-order offer: Use SMOOTH20 for 20% off the regular $375 price: $300 per box, replacing the current $350 special. Consumer first orders only. Applies to BioRNA-C only and cannot be combined with specials or bundles."
-  }
+  },
+  "evidence": "The up-to-95% scar-volume-reduction claim applies to BioRNA Daily (Antiscar) and BioRNA-C. Small study of 50 patients over 60 days, measured with a high-resolution 3D scanner. \u201cUp to\u201d is the highest reported reduction, not an average or a guaranteed result."
 }
