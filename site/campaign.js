@@ -6,7 +6,7 @@ if(testMode)$('#test-option').classList.remove('hidden');
 document.querySelectorAll('[data-product]').forEach(a=>a.addEventListener('click',()=>{$('#product').value=a.dataset.product;}));
 const bar=document.querySelector('.bottom');
 if(bar&&'IntersectionObserver' in window){const seen=new Set();const io=new IntersectionObserver(entries=>{for(const en of entries)en.isIntersecting?seen.add(en.target):seen.delete(en.target);bar.classList.toggle('away',seen.size>0);});for(const el of [$('.hero'),$('#apply'),$('footer')])if(el)io.observe(el);}
-const form=$('#provider'),submit=$('#submit'),submitLabel=submit.textContent;
+const form=$('#provider'),submit=$('#submit');let submitLabel=submit.textContent;
 form.addEventListener('submit',async e=>{
   e.preventDefault();
   $('#form-error').textContent='';
@@ -36,7 +36,7 @@ window.addEventListener('pageshow',()=>{submit.disabled=false;submit.textContent
 
 function track(name,detail={}){window.dispatchEvent(new CustomEvent('smoothscar:analytics',{detail:{event:name,...detail}}));if(typeof window.gtag==='function')window.gtag('event',name,detail);}
 const inquiryType=document.querySelector('#inquiry-type');
-if(params.get('intent')==='provider'){inquiryType.value='provider';form.querySelector('[name=offer_code]').value='';submit.textContent='Request private provider pricing';}
+if(params.get('intent')==='provider'){inquiryType.value='provider';form.querySelector('[name=offer_code]').value='';submit.textContent='Request private provider pricing';submitLabel=submit.textContent;}
 document.querySelectorAll('[data-intent="provider"]').forEach(a=>a.addEventListener('click',()=>{inquiryType.value='provider';track('provider_inquiry_click');}));
 document.querySelectorAll('[data-product]').forEach(a=>a.addEventListener('click',()=>track('product_inquiry_click',{product:a.dataset.product})));
 let started=false;form.addEventListener('input',()=>{if(!started){started=true;track('inquiry_start',{inquiry_type:inquiryType.value});}});
