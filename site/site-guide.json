@@ -1,52 +1,33 @@
 {
   "name": "SmoothScar",
   "url": "https://smoothscar.com/",
-  "description": "BioRNA scar-care product information and customer/provider inquiries.",
   "contact": {
     "email": "helixbiodyne@rayesolutions.com"
   },
   "pages": {
-    "home": "https://smoothscar.com/",
-    "products": [
-      "https://smoothscar.com/products/biorna-daily/",
-      "https://smoothscar.com/products/biorna-c/"
-    ],
-    "providers": "https://smoothscar.com/providers/",
-    "science": "https://smoothscar.com/scar-care-science/",
-    "inquiries": "https://smoothscar.com/#apply"
+    "customer": "https://smoothscar.com/customer/",
+    "provider": "https://smoothscar.com/provider/",
+    "science": "https://smoothscar.com/scar-care-science/"
   },
-  "consumer_pricing": {
-    "currency": "USD",
-    "unit": "box",
-    "regular": 375,
-    "first_order": {
-      "code": "SMOOTH20",
-      "discount_percent": 20,
-      "base_price": 375,
-      "price": 300,
-      "terms": "Consumer first order only; no stacking; arranged by quote with the team."
+  "products": [
+    {
+      "name": "BioRNA Daily (Antiscar)",
+      "regular": 375,
+      "current_special": 300,
+      "discount_code": null
     },
-    "special_by_product": {
-      "BioRNA Daily": 300,
-      "BioRNA-C": 350
+    {
+      "name": "BioRNA-C",
+      "regular": 375,
+      "current_special": 350,
+      "first_order_offer": "BioRNA-C first-order offer: Use SMOOTH20 for 20% off the regular $375 price: $300 per box, replacing the current $350 special. Consumer first orders only. Applies to BioRNA-C only and cannot be combined with specials or bundles."
     }
-  },
-  "ordering": {
-    "method": "inquiry_and_quote",
-    "payment_on_site": false,
-    "availability": "Confirm with team",
-    "shipping_taxes_returns": "Confirm before order acceptance"
-  },
-  "evidence": "Commercial hydrolyzed RNA product descriptions and SPARC-targeting siRNA research are distinct. Review product-specific evidence and labeling.",
+  ],
+  "ordering": "Itemized quote including product, eligible offer, shipping and tax. No payment on site.",
+  "provider_terms": "Private pricing; quotes expire in 7 days; retail stock via accredited supplier.",
   "webinar": {
-    "name": "Smooth Skin",
     "date": "TBD",
-    "signup_url": "https://smoothscar.com/#webinar",
-    "offer": "25% off first purchase on signup; team confirms offer details before ordering"
-  },
-  "provider_terms": {
-    "pricing": "Private",
-    "quote_validity_days": 7,
-    "retail_supply": "Accredited supplier"
+    "signup": "https://smoothscar.com/customer/#webinar",
+    "offer": "BioRNA-C first-order offer: Use SMOOTH20 for 20% off the regular $375 price: $300 per box, replacing the current $350 special. Consumer first orders only. Applies to BioRNA-C only and cannot be combined with specials or bundles."
   }
 }
