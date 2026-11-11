@@ -13,3 +13,5 @@ webinarForm?.addEventListener('submit', async event => {
     location.assign('/webinar-thank-you');
   } catch (err) {error.textContent = err.message || 'Please try again.';button.disabled=false;button.textContent=label;}
 });
+
+window.addEventListener('pageshow',()=>{const form=document.querySelector('#webinar-form');if(!form)return;const button=form.querySelector('button[type="submit"]');if(button){button.disabled=false;button.textContent='Send me webinar updates' || (form.getAttribute('name')==='provider-access'?'Request private provider pricing':'Request my quote');}});
