@@ -23,3 +23,7 @@
 
 /* CRO: core content never depends on scroll/reveal scripts. */
 .hero-art,.hero-art img{opacity:1;visibility:visible;content-visibility:visible}.hero-art{min-width:0}.hero-art img{background:#e4edf9}.safety{font-size:14px;font-weight:600;border-left:3px solid #617fa7;padding:10px 16px;margin-top:22px}.webinar-section{background:#f5e5ee}.webinar-section .split{align-items:start}.trust{background:#eef4fc;border-radius:28px}.note{font-size:14px}.hero-foot{font-size:13px}.cards .btn{margin-top:20px}#science>.btn{margin-top:24px}h2+p{margin-bottom:22px}@media(max-width:760px){.navlinks>a[href="/providers/"]{display:inline-flex;font-size:12px;min-height:44px;align-items:center}.navlinks{gap:12px}.cards{grid-template-columns:1fr}.hero-art{max-width:600px;width:100%;margin:auto}header nav{gap:10px}.navlinks .btn{font-size:12px}.trust{border-radius:0}.hero-foot{font-size:13px}}
+
+/* Mobile readability and stable loading. */
+[hidden]{display:none!important}footer a{overflow-wrap:anywhere}.product-photo{background:#e4edf9}.fields>*{min-width:0}input,select,textarea{max-width:100%}.navlinks{flex-wrap:wrap}@media(max-width:480px){header nav{flex-wrap:wrap}.navlinks{gap:10px;max-width:100%}.product-page header nav>a:not(.brand){min-height:44px;display:inline-flex;align-items:center}.brand{max-width:100%;overflow-wrap:anywhere}footer a{display:inline-block;padding:8px 0}.product-frame-caption{flex-wrap:wrap}}
+.product-frame-caption a{display:inline-flex;align-items:center;min-height:44px}@media(max-width:480px){footer a{min-height:44px}}
