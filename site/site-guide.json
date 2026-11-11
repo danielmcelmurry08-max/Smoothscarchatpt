@@ -34,5 +34,16 @@
     "availability": "Confirm with team",
     "shipping_taxes_returns": "Confirm before order acceptance"
   },
-  "evidence": "Commercial hydrolyzed RNA product descriptions and SPARC-targeting siRNA research are distinct. Review product-specific evidence and labeling."
+  "evidence": "Commercial hydrolyzed RNA product descriptions and SPARC-targeting siRNA research are distinct. Review product-specific evidence and labeling.",
+  "webinar": {
+    "name": "Smooth Skin",
+    "date": "TBD",
+    "signup_url": "https://smoothscar.com/#webinar",
+    "offer": "25% off first purchase on signup; team confirms offer details before ordering"
+  },
+  "provider_terms": {
+    "pricing": "Private",
+    "quote_validity_days": 7,
+    "retail_supply": "Accredited supplier"
+  }
 }

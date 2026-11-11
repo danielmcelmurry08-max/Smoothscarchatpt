@@ -7,17 +7,16 @@
   const test=params.get('test')==='1'||!!(receipt&&receipt.test);
   if(/^BIO-[A-Z0-9]{1,16}$/.test(ref)){const el=$('#ref');el.textContent=(test?'Test request · ':'')+'Your reference number: '+ref;el.classList.remove('hidden');}
   if(receipt&&receipt.name){const first=String(receipt.name).trim().split(/\s+/)[0].slice(0,40);if(first)$('#title').textContent='Thank you, '+first+'!';}
-  if (receipt && !test && receipt.reference === params.get('ref')) {
+  if (receipt && !test && receipt.inquiryType !== 'provider' && receipt.reference === params.get('ref')) {
     const offer = document.createElement('p');
     offer.textContent = 'Consumer first-order option: quote SMOOTH20 for 20% off the regular $375 price ($300 per box). Cannot be combined with specials or bundles. Our team confirms eligibility and payment before ordering.';
     document.querySelector('#ref').after(offer);
   }
-  // Prefill the Calendly booking form with the details the prospect already entered.
+  // Open the optional scheduler without sending inquiry details in its URL.
   const cal=new URL('https://calendly.com/daniel-mcelmurry08/30min');
   cal.searchParams.set('hide_gdpr_banner','1');
   cal.searchParams.set('embed_type','Inline');
   cal.searchParams.set('embed_domain',location.hostname);
-  if(receipt){if(receipt.name)cal.searchParams.set('name',String(receipt.name).slice(0,100));if(receipt.email)cal.searchParams.set('email',String(receipt.email).slice(0,200));if(ref)cal.searchParams.set('utm_content',ref);}
   $('#calendly').src=cal.toString();
   if(test)$('#again').classList.remove('hidden');
   if(receipt){
