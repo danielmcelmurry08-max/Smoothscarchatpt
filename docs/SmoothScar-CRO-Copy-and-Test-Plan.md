@@ -64,7 +64,7 @@ Each patch uses dissolving hyaluronic acid micro-tips and hydrolyzed RNA. The pa
 
 ## Promising results. Clear limits.
 
-Here are the approved BioRNA study and survey findings. They describe groups and individual responses, not a promise of what your scar will look like.
+Explore the BioRNA study and survey findings. They describe groups and individual responses, not a promise of what your scar will look like.
 
 ### Reduce scar volume by up to 95%
 
@@ -365,3 +365,6 @@ Build and existing repository checks pass: form live/test routing, provider/Exce
 
 
 Privacy fix: optional Calendly scheduling no longer prefills names, email addresses or inquiry references in third-party URL parameters.
+
+
+Production verification: Netlify deployment succeeded. The connected browser confirmed the rendered hero image, revised homepage and provider copy, product selection into the quote form, provider intent selection and dedicated webinar section. Netlify registered the webinar form and new quote fields. Mobile viewport testing and live email notification delivery remain unverified.
