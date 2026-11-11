@@ -29,7 +29,7 @@ for(const file of pages){
 }
 const main=await readFile('site/index.html','utf8');
 assert.ok(main.includes('href="/provider/">For providers'), 'Provider pathway must remain visible');
-assert.ok(main.includes('href="/customer/">I am a customer'), 'Root must have a customer path');
+assert.ok(main.includes('href="/customer/">Explore scar-care patches'), 'Root must have a customer path');
 console.log('Validated public canonicals, sitemap coverage, JSON-LD/CSP, internal assets, headings and landing attribution.');
 // A visitor can land on a product, browse, then inquire on the homepage.
 const {runInNewContext}=await import('node:vm');
