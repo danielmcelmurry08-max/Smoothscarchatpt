@@ -19,13 +19,16 @@
     "currency": "USD",
     "unit": "box",
     "regular": 375,
-    "special": 350,
     "first_order": {
       "code": "SMOOTH20",
       "discount_percent": 20,
       "base_price": 375,
       "price": 300,
       "terms": "Consumer first order only; no stacking; arranged by quote with the team."
+    },
+    "special_by_product": {
+      "BioRNA Daily": 300,
+      "BioRNA-C": 350
     }
   },
   "ordering": {

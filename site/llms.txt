@@ -13,7 +13,7 @@
 - [Site information](https://smoothscar.com/site-guide.json): Public product navigation and ordering facts.
 
 ## Ordering
-Regular consumer price: USD375 per box. Current special: USD350 per box. SMOOTH20: 20% off the regular USD375 price, giving USD300 per box, for consumer first orders arranged with the team. No stacking. Provider pricing is quoted privately. Confirm availability, shipping, taxes, payment and return terms before ordering.
+Regular consumer price: USD375 per box. Current specials: BioRNA Daily USD300 per box; BioRNA-C USD350 per box. SMOOTH20: 20% off the regular USD375 price, giving USD300 per box, for consumer first orders arranged with the team. No stacking. Provider pricing is quoted privately. Confirm availability, shipping, taxes, payment and return terms before ordering.
 
 Contact: helixbiodyne@rayesolutions.com
 
