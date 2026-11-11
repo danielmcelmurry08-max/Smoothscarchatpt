@@ -27,3 +27,4 @@
 /* Mobile readability and stable loading. */
 [hidden]{display:none!important}footer a{overflow-wrap:anywhere}.product-photo{background:#e4edf9}.fields>*{min-width:0}input,select,textarea{max-width:100%}.navlinks{flex-wrap:wrap}@media(max-width:480px){header nav{flex-wrap:wrap}.navlinks{gap:10px;max-width:100%}.product-page header nav>a:not(.brand){min-height:44px;display:inline-flex;align-items:center}.brand{max-width:100%;overflow-wrap:anywhere}footer a{display:inline-block;padding:8px 0}.product-frame-caption{flex-wrap:wrap}}
 .product-frame-caption a{display:inline-flex;align-items:center;min-height:44px}@media(max-width:480px){footer a{min-height:44px}}
+@media(max-width:760px){.navlinks .btn{min-height:44px}}@media(max-width:480px){.hero-art figcaption,.product-frame-caption{font-size:14px}}
