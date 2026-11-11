@@ -11,6 +11,8 @@ const pages=files.filter(file=>file.endsWith('.html'));
 for(const file of pages){
   const html=await readFile(file,'utf8');
   for(const m of html.matchAll(/<(?:a|link|img|script)\b[^>]*\b(?:href|src)="(\/[^"?#]*)/g)){
+    // Image CDN is a runtime route; its source assets are checked separately.
+    if(m[1]==='/.netlify/images') continue;
     const target=path.join(root,m[1]);
     try {await access(target);} catch {await access(path.join(target,'index.html'));}
   }
