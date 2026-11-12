@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<title>SmoothScar</title>
+<rect width="64" height="64" rx="15" fill="#173b35"/>
+<path d="M44 18c-5-5-21-5-23 5-3 13 23 8 23 19-1 11-20 11-27 3" fill="none" stroke="#f1e6d9" stroke-width="6" stroke-linecap="round"/>
+<path d="M19 51h26" stroke="#a6c7ae" stroke-width="3" stroke-linecap="round"/>
+</svg>
