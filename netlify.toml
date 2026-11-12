@@ -24,3 +24,23 @@
   to = "/provider/:splat"
   status = 301
   force = true
+
+# Legacy campaign URL; preserve inbound links and search referrals.
+[[redirects]]
+  from = "/evidence"
+  to = "/scar-care-science/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/evidence/"
+  to = "/scar-care-science/"
+  status = 301
+  force = true
+
+# Browser legacy icon route: one canonical, branded SVG favicon.
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.svg"
+  status = 301
+  force = true
