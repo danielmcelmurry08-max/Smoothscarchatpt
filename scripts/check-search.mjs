@@ -48,3 +48,14 @@ landing('',{elements:fields});assert.equal(fields.utm_source.value,'linkedin');a
 const disabled={getItem(){throw Error('disabled');},setItem(){throw Error('disabled');}};
 landing('?utm_source=facebook',{elements:fields},disabled);assert.equal(fields.utm_source.value,'facebook');
 console.log('Validated attribution across product-to-inquiry navigation and storage-disabled fallback.');
+
+const favicon=await readFile('site/favicon.svg','utf8');
+assert.ok(favicon.includes('<svg')&&favicon.includes('viewBox="0 0 64 64"'),'Branded favicon exists');
+for(const legacy of ['/evidence','/evidence/','/favicon.ico']){
+ assert.ok(toml.includes('from = "'+legacy+'"'),'Missing legacy route: '+legacy);
+}
+assert.ok(toml.includes('to = "/scar-care-science/"'),'Evidence redirect target missing');
+assert.ok(toml.includes('to = "/favicon.svg"'),'Favicon redirect target missing');
+const build=await readFile('scripts/build.mjs','utf8');
+assert.ok(build.includes('rel=\\"icon\\"')||build.includes('rel="icon"'),'Favicon injection missing from build');
+console.log('Validated favicon publication, legacy redirects, and build integration.');
