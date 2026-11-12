@@ -10,7 +10,7 @@ async function addSocialLinks(dir){
   if(!entry.name.endsWith('.html'))continue;
   const html=await readFile(file,'utf8');
   if(!html.includes('<header>'))continue;
-  const updated=html.replace('</nav></header>',socialTop+'</nav></header>').replace('</footer>',socialBottom+'</footer>');
+  const updated=html.replace('</head>','<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="shortcut icon" href="/favicon.svg"></head>').replace('</nav></header>',socialTop+'</nav></header>').replace('</footer>',socialBottom+'</footer>');
   await writeFile(file,updated);
  }
 }
