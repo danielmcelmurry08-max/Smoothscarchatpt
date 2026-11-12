@@ -4,7 +4,7 @@
  if(location.pathname==='/' && params.get('intent')==='provider'){location.replace('/provider/#apply');return;}
  const form=document.querySelector('[data-quote-form]'); if(!form)return;
  const product=form.elements.product,offer=document.querySelector('#c-offer'),code=document.querySelector('#offer-code');
- function updateOffer(){if(!offer)return;const on=product.value==='BioRNA-C';offer.hidden=!on;code.disabled=!on;if(!on)code.value='';}
+ function updateOffer(){if(!offer||!code)return;const on=product.value==='BioRNA-C';offer.hidden=!on;code.disabled=!on;if(on&&!code.value.trim())code.value='SMOOTH20';if(!on)code.value='';}
  const requested=params.get('product');if(requested==='daily'||requested==='BioRNA Antiscar'||requested==='BioRNA Daily (Antiscar)')product.value='BioRNA Daily (Antiscar)';if(requested==='c'||requested==='BioRNA-C')product.value='BioRNA-C';
  product.addEventListener('change',updateOffer);updateOffer();
  form.addEventListener('submit',async event=>{
