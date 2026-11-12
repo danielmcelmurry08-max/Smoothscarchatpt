@@ -13,15 +13,15 @@
   "products": [
     {
       "name": "BioRNA Daily (Antiscar)",
-      "regular": 375,
+      "regular": 300,
       "current_special": 300,
       "discount_code": null
     },
     {
       "name": "BioRNA-C",
       "regular": 375,
-      "current_special": 350,
-      "first_order_offer": "BioRNA-C first-order offer: Use SMOOTH20 for 20% off the regular $375 price: $300 per box, replacing the current $350 special. Consumer first orders only. Applies to BioRNA-C only and cannot be combined with specials or bundles."
+      "current_special": 375,
+      "first_order_offer": "BioRNA-C: $375 regular; $300 for eligible first-time consumers with code SMOOTH20 (20% off). No combining offers. Shipping and tax confirmed by quote."
     }
   ],
   "ordering": "Itemized quote including product, eligible offer, shipping and tax. No payment on site.",
@@ -29,9 +29,9 @@
   "webinar": {
     "date": "TBD",
     "signup": "https://smoothscar.com/customer/#webinar",
-    "offer": "BioRNA-C first-order offer: Use SMOOTH20 for 20% off the regular $375 price: $300 per box, replacing the current $350 special. Consumer first orders only. Applies to BioRNA-C only and cannot be combined with specials or bundles."
+    "offer": "BioRNA-C: $375 regular; $300 for eligible first-time consumers with code SMOOTH20 (20% off). No combining offers. Shipping and tax confirmed by quote."
   },
-  "evidence": "The up-to-95% scar-volume-reduction claim applies to BioRNA Daily (Antiscar) and BioRNA-C. Small study of 50 patients over 60 days, measured with a high-resolution 3D scanner. \u201cUp to\u201d is the highest reported reduction, not an average or a guaranteed result.",
+  "evidence": "A published 2024 randomized trial tested a specific SPARC-targeting siRNA microneedle patch versus silicone sheets; these outcomes cannot automatically be attributed to marketed hydrolyzed-RNA products or BioRNA-C. Individual results vary.",
   "social_profiles": {
     "Facebook": "https://www.facebook.com/people/SmoothScar/61596111342233/",
     "Instagram": "https://www.instagram.com/smoothscar__skin_patch_/",
