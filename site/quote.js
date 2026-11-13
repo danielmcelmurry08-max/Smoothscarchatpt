@@ -11,7 +11,7 @@
   event.preventDefault();if(!form.reportValidity())return;
   const button=form.querySelector('button'),label=button.textContent,error=document.querySelector('#form-error');button.disabled=true;button.textContent='Sending your request…';error.textContent='';
   const data=new URLSearchParams(new FormData(form));data.set('reference','BIO-'+crypto.randomUUID().replace(/-/g,'').slice(0,8).toUpperCase());
-  try{const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data});if(!response.ok)throw Error('Your request could not be sent. Try again or email helixbiodyne@rayesolutions.com.');location.assign(form.getAttribute('action'));}
+  try{const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data});if(!response.ok)throw Error('Your request could not be sent. Try again or email '+(form.name==='provider-access'?'providers@smoothscar.com':'contact@smoothscar.com')+'.');location.assign(form.getAttribute('action'));}
   catch(err){error.textContent=err.message;button.disabled=false;button.textContent=label;}
  });
 })();

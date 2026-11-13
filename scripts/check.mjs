@@ -17,7 +17,7 @@ for(const section of ['hero']){
 for(const html of [hub,customer,provider,daily,c]){
  assert.ok(!html.includes('25%'));
  assert.ok(!/BioRNA Daily(?! \(Antiscar\))|BioRNA Antiscar/.test(html),'Full product name required');
- assert.ok(html.includes('mailto:helixbiodyne@rayesolutions.com'));
+ assert.ok(html.includes('mailto:contact@smoothscar.com'));
 }
 new Function(quote);new Function(await read('webinar.js'));
 assert.ok(quote.includes("code.disabled=!on"));
