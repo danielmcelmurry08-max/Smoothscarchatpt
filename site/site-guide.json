@@ -13,7 +13,7 @@
   "products": [
     {
       "name": "BioRNA Daily (Antiscar)",
-      "regular": 300,
+      "regular": 375,
       "current_special": 300,
       "discount_code": null
     },
@@ -26,15 +26,11 @@
   ],
   "ordering": "Itemized quote including product, eligible offer, shipping and tax. No payment on site.",
   "provider_terms": "Private pricing; quotes expire in 7 days; retail stock via accredited supplier.",
-  "webinar": {
-    "date": "TBD",
-    "signup": "https://smoothscar.com/customer/#webinar",
-    "offer": "BioRNA-C: $375 regular; $300 for eligible first-time consumers with code SMOOTH20 (20% off). No combining offers. Shipping and tax confirmed by quote."
-  },
   "evidence": "A published 2024 randomized trial tested a specific SPARC-targeting siRNA microneedle patch versus silicone sheets; these outcomes cannot automatically be attributed to marketed hydrolyzed-RNA products or BioRNA-C. Individual results vary.",
   "social_profiles": {
     "Facebook": "https://www.facebook.com/people/SmoothScar/61596111342233/",
     "Instagram": "https://www.instagram.com/smoothscar__skin_patch_/",
     "LinkedIn": "https://www.linkedin.com/company/144078770/"
-  }
+  },
+  "quote_response_time": "We reply by the next business day."
 }

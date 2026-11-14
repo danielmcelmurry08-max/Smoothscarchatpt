@@ -1,6 +1,7 @@
 (() => {
  const params=new URLSearchParams(location.search);
- if(location.pathname==='/' && ['#portfolio','#apply','#biorna-daily','#biorna-c','#webinar','#science'].includes(location.hash) && params.get('intent')!=='provider'){location.replace('/customer/'+location.search+location.hash);return;}
+ if(location.hash==='#webinar'){location.replace('/customer/#apply');return;}
+ if(location.pathname==='/' && ['#portfolio','#apply','#biorna-daily','#biorna-c','#science'].includes(location.hash) && params.get('intent')!=='provider'){location.replace('/customer/'+location.search+location.hash);return;}
  if(location.pathname==='/' && params.get('intent')==='provider'){location.replace('/provider/#apply');return;}
  const form=document.querySelector('[data-quote-form]'); if(!form)return;
  const product=form.elements.product,offer=document.querySelector('#c-offer'),code=document.querySelector('#offer-code');
@@ -27,4 +28,12 @@ window.addEventListener('pageshow',()=>{const form=document.querySelector('[data
  const c='<p><strong>BioRNA-C — $300 first order with SMOOTH20, 8 patches, twice a week.</strong> Regular $375/box; first-time consumer orders only. Wear 8–12 hours overnight.</p>';
  const update=()=>{const value=form.elements.product.value;summary.innerHTML=value==='BioRNA-C'?c:value==='BioRNA Daily (Antiscar)'?daily:daily+c;};
  form.elements.product.addEventListener('change',update);update();
+})();
+
+// Keep the floating shortcut out of the way while the quote section is visible.
+(() => {
+ const dock=document.querySelector('.quote-dock'),apply=document.querySelector('#apply');
+ if(!dock||!apply||typeof IntersectionObserver==='undefined')return;
+ const observer=new IntersectionObserver(entries=>{dock.hidden=entries[0].isIntersecting;});
+ observer.observe(apply);
 })();

@@ -19,7 +19,7 @@ for(const html of [hub,customer,provider,daily,c]){
  assert.ok(!/BioRNA Daily(?! \(Antiscar\))|BioRNA Antiscar/.test(html),'Full product name required');
  assert.ok(html.includes('mailto:contact@smoothscar.com'));
 }
-new Function(quote);new Function(await read('webinar.js'));
+new Function(quote);
 assert.ok(quote.includes("code.disabled=!on"));
 assert.ok(customer.includes('action="/customer-confirmation"'));
 assert.ok(provider.includes('action="/provider-confirmation"'));

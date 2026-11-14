@@ -57,3 +57,27 @@
   to = "/customer/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/webinar"
+  to = "/customer/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/webinar/"
+  to = "/customer/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/webinar-thank-you"
+  to = "/customer/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/webinar-thank-you.html"
+  to = "/customer/"
+  status = 301
+  force = true
