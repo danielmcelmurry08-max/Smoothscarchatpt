@@ -124,3 +124,6 @@ textarea,input,select{min-width:0}
  .quote-dock{bottom:calc(12px + env(safe-area-inset-bottom));right:16px;left:16px}.quote-dock .btn{width:100%}
  html{scroll-padding-top:245px}#apply{scroll-margin-top:245px}
 }
+
+/* Make the scar-volume result easy to scan on desktop and mobile. */
+.study-highlight > p:first-child > strong{display:block;font-size:clamp(21px,2vw,28px);font-weight:700;line-height:1.2;letter-spacing:-.025em}
