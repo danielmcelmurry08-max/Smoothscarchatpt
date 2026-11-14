@@ -44,3 +44,16 @@
   to = "/favicon.svg"
   status = 301
   force = true
+
+# Preserve the shared product-index link without swallowing product detail routes.
+[[redirects]]
+  from = "/products"
+  to = "/customer/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products/"
+  to = "/customer/"
+  status = 301
+  force = true

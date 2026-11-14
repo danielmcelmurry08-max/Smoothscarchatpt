@@ -96,3 +96,31 @@ textarea,input,select{min-width:0}
   .actions .btn{width:100%}
   .comparison-stage.is-csection{aspect-ratio:2.5/1}
 }
+/* Conversion audit: complete cards, real photography, and a visible quote path. */
+.conversion-update .testimonial-cards,.conversion-update .product-stories .testimonial-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;scroll-snap-type:none;padding-bottom:0}
+.conversion-update .testimonial-card{width:auto;max-width:100%;min-width:0;overflow-wrap:anywhere}
+.conversion-update .swipe-note{display:none}
+.conversion-update .product-stories{margin:40px auto;max-width:1100px}
+.study-highlight{padding:22px 26px;border:1px solid #b7cce4;border-radius:20px;background:#edf4fc;margin:26px 0;max-width:850px}
+.study-highlight p:first-child{margin-top:0}.study-highlight h2{font-size:30px}
+.real-product{max-width:520px;margin:30px auto;min-width:0}.real-product img{width:100%;height:auto;max-height:550px;object-fit:contain;border-radius:22px}.real-product figcaption{font-size:12px;line-height:1.5;color:var(--muted);margin-top:12px}
+.hero-inner>.real-product{margin:0}.about-story .real-product{max-width:380px}
+.price-anchor{align-self:center;font-weight:600}.closing-cta{border-top:1px solid var(--line)}
+.study-chart{padding:26px;border-radius:20px;background:#edf4fc;margin:28px 0;max-width:850px}.chart-row{display:grid;grid-template-columns:170px minmax(0,1fr) 65px;gap:14px;align-items:center;margin-top:22px}.chart-track{background:#d6e0ed;height:28px;border-radius:8px;overflow:hidden}.chart-bar{height:100%;background:var(--navy)}.chart-bar.silicone{background:#73869c}
+.quote-value{padding:18px;border:1px solid #b8cadd;border-radius:18px;background:#edf4fc;color:var(--ink);margin-bottom:20px}.quote-value p:first-child{margin-top:0}
+.header-quote{flex-shrink:0;white-space:nowrap}.conversion-update nav{flex-wrap:wrap;gap:12px}.conversion-update .navlinks{flex:1 1 480px;justify-content:flex-end;gap:18px}
+.quote-dock{position:fixed;bottom:18px;right:22px;z-index:25}.quote-dock .btn{box-shadow:0 4px 24px #173a6433}
+@media(max-width:900px){.conversion-update .testimonial-cards,.conversion-update .product-stories .testimonial-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .conversion-update .testimonial-cards,.conversion-update .product-stories .testimonial-cards{grid-template-columns:minmax(0,1fr)}
+ .conversion-update header nav{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:10px 16px}
+ .conversion-update header .brand{font-size:20px}.conversion-update header .header-quote{display:inline-flex!important;width:auto;font-size:12px;min-height:44px;padding:10px 14px;grid-column:2;grid-row:1}
+ .conversion-update .social-links-top{grid-column:1/-1;grid-row:3;justify-content:center;margin:0}
+ .conversion-update .navlinks{grid-column:1/-1;grid-row:2;display:flex!important;width:100%;flex-wrap:wrap!important;overflow:visible!important;justify-content:center;gap:2px;padding:0}
+ .conversion-update .navlinks>a:not(.btn){white-space:normal;font-size:11px;min-height:36px;padding:5px 7px;flex:0 1 auto}
+ .conversion-update header nav>a:not(.brand):not(.header-quote){grid-column:1/-1;order:2;font-size:12px;min-height:32px}
+ .study-highlight{padding:18px}.study-highlight h2{font-size:26px}.real-product{max-width:420px}.real-product img{max-height:440px}
+ .study-chart{padding:18px}.chart-row{grid-template-columns:minmax(0,1fr) 60px;gap:8px}.chart-row>span{grid-column:1/-1}.chart-track{height:24px}
+ .quote-dock{bottom:calc(12px + env(safe-area-inset-bottom));right:16px;left:16px}.quote-dock .btn{width:100%}
+ html{scroll-padding-top:245px}#apply{scroll-margin-top:245px}
+}

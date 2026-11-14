@@ -17,3 +17,14 @@
 })();
 
 window.addEventListener('pageshow',()=>{const form=document.querySelector('[data-quote-form]');if(!form)return;const button=form.querySelector('button[type="submit"]');if(button){button.disabled=false;button.textContent='' || (form.getAttribute('name')==='provider-access'?'Request private provider pricing':'Request my quote');}});
+
+// Reflect selection without adding or changing any form field.
+(() => {
+ const form=document.querySelector('[data-quote-form]');
+ const summary=document.querySelector('#quote-product-summary');
+ if(!form||!summary)return;
+ const daily='<p><strong>BioRNA Daily — $300/box, 7 patches, nightly 8 hours.</strong> Regular $375, no code needed.</p>';
+ const c='<p><strong>BioRNA-C — $300 first order with SMOOTH20, 8 patches, twice a week.</strong> Regular $375/box; first-time consumer orders only. Wear 8–12 hours overnight.</p>';
+ const update=()=>{const value=form.elements.product.value;summary.innerHTML=value==='BioRNA-C'?c:value==='BioRNA Daily (Antiscar)'?daily:daily+c;};
+ form.elements.product.addEventListener('change',update);update();
+})();
