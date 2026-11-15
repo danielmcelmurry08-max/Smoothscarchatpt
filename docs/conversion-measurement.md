@@ -1,0 +1,7 @@
+# Conversion measurement
+
+The first-party conversion-event function writes structured `smoothscar_conversion` entries to Netlify function logs. Each entry contains only event and audience. Count product_choice, inquiry_start and inquiry_success by audience over the same log window. Browser events are directional observations, not verified sales or unique visitors. An inquiry_success is sent only after the existing form POST succeeds. Do not infer sales from inquiries or attribute events across visitors; no visitor IDs are used.
+
+This is basic operational measurement, not a historical analytics dashboard. Logs have the account's existing retention; export them before they expire if longer analysis is needed. No external analytics account was found or added. Global Privacy Control and Do Not Track suppress events. Events do not contain input values, actual selected product, URL query strings, IP addresses or contact information. Hosting infrastructure can independently retain standard request logs under existing Netlify settings.
+
+Enhanced image prompts: preserve the supplied patch geometry and construction; remove paper and photographer shadow; correct lighting and color; use a pale blue-white studio surface, realistic shadows, no text or invented packaging. Built-in image generation was used for the patch and tray edits. Website captions identify the enhanced presentations. Sources: IMG_8011(1).jpeg and IMG_8015(1).jpeg.
