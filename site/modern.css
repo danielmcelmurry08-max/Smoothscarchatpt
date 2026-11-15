@@ -181,3 +181,11 @@ textarea,input,select{min-width:0}
  .feature-comparison tbody td{display:block;text-align:left;border:0;padding:8px;background:#f1f5fa;border-radius:10px}
  .feature-comparison tbody td::before{content:attr(data-label);display:block;font-size:12px;font-weight:600;line-height:1.4;margin-bottom:5px}
 }
+
+/* Compact, keyboard-focusable testimonial strips for mouse and touch. */
+.conversion-update .testimonial-cards,.conversion-update .product-stories .testimonial-cards,.conversion-update .evidence-stories .testimonial-cards,.conversion-update .manufacturer-quotes{display:flex!important;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:2px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;padding:5px 2px 16px;scrollbar-width:thin;scrollbar-color:#9baec4 transparent;max-width:100%}
+.conversion-update .testimonial-card,.conversion-update .manufacturer-quotes>figure{flex:0 0 min(86%,360px);width:auto;max-width:360px;scroll-snap-align:start;margin:0;min-width:0}
+.conversion-update .swipe-note{display:block;font-size:13px;color:var(--muted)}
+.conversion-update .testimonial-cards:focus-visible,.conversion-update .manufacturer-quotes:focus-visible{outline:2px solid #5589c0;outline-offset:5px;border-radius:10px}
+.mechanism-layout:not(:has(figure)){grid-template-columns:minmax(0,1fr);max-width:850px}
+@media(max-width:760px){.conversion-update .testimonial-cards,.conversion-update .manufacturer-quotes{gap:14px}.conversion-update .testimonial-card,.conversion-update .manufacturer-quotes>figure{flex-basis:88%;max-width:360px;padding:22px}}
