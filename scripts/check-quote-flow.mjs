@@ -14,7 +14,7 @@ function mount(query){
 }
 let x=mount('?product=c');
 assert.equal(x.product.value,'BioRNA-C');
-assert.equal(x.offer.hidden,false);
+assert.equal(x.offer.hidden,true,'Offer details remain hidden before submission');
 assert.equal(x.coupon.disabled,false);
 assert.equal(x.coupon.value,'SMOOTH20');
 x.coupon.value='CUSTOM';

@@ -189,3 +189,10 @@ textarea,input,select{min-width:0}
 .conversion-update .testimonial-cards:focus-visible,.conversion-update .manufacturer-quotes:focus-visible{outline:2px solid #5589c0;outline-offset:5px;border-radius:10px}
 .mechanism-layout:not(:has(figure)){grid-template-columns:minmax(0,1fr);max-width:850px}
 @media(max-width:760px){.conversion-update .testimonial-cards,.conversion-update .manufacturer-quotes{gap:14px}.conversion-update .testimonial-card,.conversion-update .manufacturer-quotes>figure{flex-basis:88%;max-width:360px;padding:22px}}
+
+/* Small discovery prompt, delayed until visitors have had time to read. */
+.patch-discovery{position:fixed;inset:0;width:min(460px,calc(100vw - 32px));max-width:none;max-height:calc(100dvh - 48px);overflow:auto;margin:auto;padding:36px 28px 28px;border:1px solid var(--line);border-radius:28px;background:#fbfcff;color:var(--ink);box-shadow:0 20px 70px #142e5138}
+.patch-discovery::backdrop{background:rgba(20,46,81,.35)}.patch-discovery h2{font-size:clamp(27px,5vw,35px);padding-right:15px}.patch-discovery .eyebrow{margin-top:8px;padding-right:20px}.patch-discovery .actions{gap:10px;margin-top:24px}.popup-close{position:absolute;top:8px;right:8px;display:grid;place-items:center;width:44px;height:44px;background:transparent;color:var(--ink);border:0;border-radius:50%;font-size:29px}.popup-close:hover{background:#eaf1fa}
+.patient-protocol details{margin-top:18px;border:1px solid var(--line);border-radius:20px;padding:18px 22px;background:#fff}.patient-protocol summary{font-weight:600;font-size:18px;cursor:pointer;min-height:44px;align-content:center}.patient-protocol .usage{margin-top:14px}.patient-protocol .usage strong{color:var(--ink)}
+#submitted-offer{margin-top:28px;padding:26px;background:#edf4fc;border:1px solid var(--line);border-radius:22px}#submitted-offer h2{font-size:30px}
+@media(max-width:600px){.patch-discovery{padding:32px 22px 24px}.patch-discovery .actions .btn{width:100%}.patient-protocol details{padding:16px}.customer-comparison h2,.patient-protocol h2{font-size:32px}}

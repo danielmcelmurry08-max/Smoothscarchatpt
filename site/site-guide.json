@@ -13,15 +13,14 @@
   "products": [
     {
       "name": "BioRNA Daily (Antiscar)",
-      "regular": 375,
-      "current_special": 300,
-      "discount_code": null
+      "discount_code": null,
+      "price_per_box": 300
     },
     {
       "name": "BioRNA-C",
       "regular": 375,
       "current_special": 375,
-      "first_order_offer": "BioRNA-C: $375 regular; $300 for eligible first-time consumers with code SMOOTH20 (20% off). No combining offers. Shipping and tax confirmed by quote."
+      "offers": "Contact our team for current offers after submitting an inquiry."
     }
   ],
   "ordering": "Itemized quote including product, eligible offer, shipping and tax. No payment on site.",
