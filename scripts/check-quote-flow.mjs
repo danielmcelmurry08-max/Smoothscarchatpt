@@ -35,3 +35,6 @@ assert.equal(x.product.value,'BioRNA Daily (Antiscar)');
 console.log('Quote selection, first-order offer prefill, custom codes, and product switching passed.');
 
 x=mount('?product=c');x.quantity.value='4';x.listeners['quantity:input']();assert.equal(x.coupon.disabled,true);assert.equal(x.coupon.value,'');x.quantity.value='1';x.listeners['quantity:input']();assert.equal(x.coupon.value,'SMOOTH20');
+
+x=mount('?product=c&quantity=4');assert.equal(x.quantity.value,'4');assert.equal(x.coupon.disabled,true);assert.equal(x.coupon.value,'');
+for(const quantity of ['0','-1','5','2.5','invalid'])assert.equal(mount('?product=c&quantity='+quantity).quantity.value,'');

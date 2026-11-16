@@ -6,7 +6,6 @@
  const start = document.querySelector('#review-inquiry');
  const edit = document.querySelector('#edit-inquiry');
  if (!review || !details || !start || !edit) return;
- const amount = value => '$' + value.toLocaleString('en-US');
  const setText = (selector, value) => { review.querySelector(selector).textContent = value; };
  function openReview() {
   if (!form.reportValidity()) return;
@@ -17,7 +16,7 @@
   setText('[data-review-quantity]', quantity ? quantity + (quantity === 1 ? ' box' : ' boxes') : 'Confirm with our team');
   setText('[data-review-contact]', fields.email.value);
   setText('[data-review-shipping]', [fields.country.value, fields.postal_code.value].filter(Boolean).join(' · ') || 'Confirm with our team');
-  setText('[data-review-subtotal]', quantity && fields.product.value ? amount(quantity * (daily ? 300 : 375)) : 'Confirmed in your quote');
+  setText('[data-review-price]', fields.product.value ? daily ? '$300 per box' : '$375 MSRP per box' : 'Daily $300 · BioRNA-C $375 MSRP');
   details.hidden = true;
   review.hidden = false;
   review.querySelector('h3').focus();

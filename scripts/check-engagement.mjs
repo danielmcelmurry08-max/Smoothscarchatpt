@@ -17,6 +17,6 @@ async function submit(ok){const values=new Map(),listeners={},product={value:'Bi
  const document={querySelector:s=>s==='[data-quote-form]'?form:s==='#form-error'?error:null};let assigned='';
  runInNewContext(quote,{URLSearchParams,Date,FormData:class extends Map{constructor(){super([['form-name','customer-quotes']])}},location:{pathname:'/customer/',search:'',hash:'',assign:p=>assigned=p},document,window:{addEventListener(){}},sessionStorage:{setItem:(k,v)=>values.set(k,v)},crypto:{randomUUID:()=> '12345678-1234-1234-1234-123456789000'},fetch:async()=>({ok})});
  await listeners.submit({preventDefault(){}});return {values,assigned,error};}
-x=await submit(false);assert.equal(x.values.has('smoothscar-contact-submitted'),false);assert.equal(x.assigned,'');x=await submit(true);assert.equal(x.values.has('smoothscar-contact-submitted'),true);assert.equal(x.assigned,'/customer-confirmation');
-console.log('Verified 15-second landing timer, session dismissal, confirmation-only offer display and successful-submission gating without network calls.');
+x=await submit(false);assert.equal(x.values.has('smoothscar-contact-submitted'),false);assert.equal(x.assigned,'');x=await submit(true);assert.equal(x.values.has('smoothscar-contact-submitted'),false);assert.equal(x.assigned,'/customer-confirmation');
+console.log('Verified 15-second landing timer, session dismissal, quote submission success and failure handling without network calls.');
 
