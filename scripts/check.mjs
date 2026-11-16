@@ -20,7 +20,7 @@ for(const html of [hub,customer,provider,daily,c]){
  assert.ok(html.includes('mailto:contact@smoothscar.com'));
 }
 new Function(quote);
-assert.ok(quote.includes("code.disabled=!on"));
+assert.ok(!quote.includes("SMOOTH20"));
 assert.ok(customer.includes('action="/customer-confirmation"'));
 assert.ok(provider.includes('action="/provider-confirmation"'));
 assert.ok(customer.includes('$300 per box')&&customer.includes('Request Daily quote')&&customer.includes('Compare BioRNA-C bundles'));

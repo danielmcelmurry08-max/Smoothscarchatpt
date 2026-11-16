@@ -4,11 +4,9 @@
  if(location.pathname==='/' && ['#portfolio','#apply','#biorna-daily','#biorna-c','#science'].includes(location.hash) && params.get('intent')!=='provider'){location.replace('/customer/'+location.search+location.hash);return;}
  if(location.pathname==='/' && params.get('intent')==='provider'){location.replace('/provider/#apply');return;}
  const form=document.querySelector('[data-quote-form]'); if(!form)return;
- const product=form.elements.product,offer=document.querySelector('#c-offer'),code=document.querySelector('#offer-code');
- function updateOffer(){if(!offer||!code)return;const on=product.value==='BioRNA-C'&&!(Number(form.elements.quantity?.value)>1);offer.hidden=true;code.disabled=!on;if(on&&!code.value.trim())code.value='SMOOTH20';if(!on)code.value='';}
+ const product=form.elements.product;
  const requested=params.get('product');if(requested==='daily'||requested==='BioRNA Antiscar'||requested==='BioRNA Daily (Antiscar)')product.value='BioRNA Daily (Antiscar)';if(requested==='c'||requested==='BioRNA-C')product.value='BioRNA-C';
  const requestedQuantity=Number(params.get('quantity'));if(form.elements.quantity&&Number.isInteger(requestedQuantity)&&requestedQuantity>=1&&requestedQuantity<=4)form.elements.quantity.value=String(requestedQuantity);
- product.addEventListener('change',updateOffer);form.elements.quantity?.addEventListener('input',updateOffer);updateOffer();
  form.addEventListener('submit',async event=>{
   event.preventDefault();if(!form.reportValidity())return;
   const button=form.querySelector('#inquiry-review:not([hidden]) button[type="submit"]')||form.querySelector('button[type="submit"]')||form.querySelector('button'),label=button.textContent,error=document.querySelector('#form-error');button.disabled=true;button.textContent='Sending your request…';error.textContent='';

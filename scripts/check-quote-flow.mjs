@@ -6,35 +6,17 @@ function mount(query){
  const listeners={};
  const product={value:'',addEventListener:(name,fn)=>{listeners[name]=fn;}};
  const quantity={value:'',addEventListener:(name,fn)=>{listeners['quantity:'+name]=fn;}};
- const offer={hidden:true},coupon={disabled:true,value:''};
  const form={elements:{product,quantity},addEventListener:(name,fn)=>{listeners['form:'+name]=fn;},getAttribute:()=>'/customer-confirmation'};
- const doc={querySelector:(selector)=>({'[data-quote-form]':form,'#c-offer':offer,'#offer-code':coupon}[selector]??null)};
+ const doc={querySelector:(selector)=>({'[data-quote-form]':form}[selector]??null)};
  const location={pathname:'/customer/',search:query,hash:'',replace:()=>{},assign:()=>{}};
  runInNewContext(code,{URLSearchParams,location,document:doc,window:{addEventListener:()=>{}},crypto:{randomUUID:()=> '12345678-1234-1234-1234-123456789000'}});
- return {product,quantity,offer,coupon,listeners};
+ return {product,quantity};
 }
-let x=mount('?product=c');
-assert.equal(x.product.value,'BioRNA-C');
-assert.equal(x.offer.hidden,true,'Offer details remain hidden before submission');
-assert.equal(x.coupon.disabled,false);
-assert.equal(x.coupon.value,'SMOOTH20');
-x.coupon.value='CUSTOM';
-x.listeners.change();
-assert.equal(x.coupon.value,'CUSTOM','Never overwrite an entered code');
-x.product.value='BioRNA Daily (Antiscar)';
-x.listeners.change();
-assert.equal(x.offer.hidden,true);
-assert.equal(x.coupon.disabled,true);
-assert.equal(x.coupon.value,'');
-x.product.value='BioRNA-C';x.listeners.change();
-assert.equal(x.coupon.value,'SMOOTH20');
-x=mount('?product=daily');
-assert.equal(x.offer.hidden,true);
-assert.equal(x.coupon.value,'');
-assert.equal(x.product.value,'BioRNA Daily (Antiscar)');
-console.log('Quote selection, first-order offer prefill, custom codes, and product switching passed.');
-
-x=mount('?product=c');x.quantity.value='4';x.listeners['quantity:input']();assert.equal(x.coupon.disabled,true);assert.equal(x.coupon.value,'');x.quantity.value='1';x.listeners['quantity:input']();assert.equal(x.coupon.value,'SMOOTH20');
-
-x=mount('?product=c&quantity=4');assert.equal(x.quantity.value,'4');assert.equal(x.coupon.disabled,true);assert.equal(x.coupon.value,'');
+assert.equal(mount('?product=c').product.value,'BioRNA-C');
+assert.equal(mount('?product=daily').product.value,'BioRNA Daily (Antiscar)');
+assert.equal(mount('?product=c&quantity=4').quantity.value,'4');
 for(const quantity of ['0','-1','5','2.5','invalid'])assert.equal(mount('?product=c&quantity='+quantity).quantity.value,'');
+for(const file of ['site/customer/index.html','site/products/biorna-c/index.html','site/quote.js']){
+ assert.doesNotMatch(await readFile(file,'utf8'),/SMOOTH20|offer_code|first-time one-box/i);
+}
+console.log('Verified quote selection, quantities and removal of the first-purchase offer.');
