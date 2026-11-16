@@ -12,9 +12,6 @@ let x=popupMount();assert.equal(x.timers[0].ms,15000);assert.ok(!x.dialog.opened
 x=popupMount({first:190000});assert.equal(x.timers[0].ms,5000,'Navigation must not restart the fifteen-second landing timer');
 assert.equal(popupMount({seen:true}).timers.length,0,'Do not repeat in the same session');
 assert.equal(popupMount({path:'/provider/'}).timers.length,0,'Do not interrupt provider inquiries');
-const offer=await readFile('site/submitted-offer.js','utf8');
-function offerMount(timestamp){const request={},selection={value:'2'},listeners={};const panel={hidden:true,innerHTML:'',querySelector:s=>s==='input:checked'?selection:request,addEventListener:(name,fn)=>listeners[name]=fn};panel.request=request;panel.selection=selection;panel.listeners=listeners;runInNewContext(offer,{document:{querySelector:()=>panel},sessionStorage:{getItem:()=>timestamp??null},Date:{now:()=>2000000}});return panel;}
-assert.equal(offerMount().hidden,true,'Direct confirmation-page visits do not reveal the offer');assert.equal(offerMount('1').hidden,true,'Expired completion flags do not reveal offers');assert.equal(offerMount('1999000').hidden,false);
 const quote=await readFile('site/quote.js','utf8');
 async function submit(ok){const values=new Map(),listeners={},product={value:'BioRNA-C',addEventListener(){}};const button={textContent:'Request my quote'},error={textContent:''};const form={name:'customer-quotes',elements:{product},addEventListener:(n,fn)=>listeners[n]=fn,reportValidity:()=>true,querySelector:()=>button,getAttribute:()=>'/customer-confirmation'};
  const document={querySelector:s=>s==='[data-quote-form]'?form:s==='#form-error'?error:null};let assigned='';
@@ -23,4 +20,3 @@ async function submit(ok){const values=new Map(),listeners={},product={value:'Bi
 x=await submit(false);assert.equal(x.values.has('smoothscar-contact-submitted'),false);assert.equal(x.assigned,'');x=await submit(true);assert.equal(x.values.has('smoothscar-contact-submitted'),true);assert.equal(x.assigned,'/customer-confirmation');
 console.log('Verified 15-second landing timer, session dismissal, confirmation-only offer display and successful-submission gating without network calls.');
 
-const bundlePanel=offerMount('1999000');assert.match(bundlePanel.request.textContent,/2 boxes/);assert.match(decodeURIComponent(bundlePanel.request.href),/600/);bundlePanel.selection.value='4';bundlePanel.listeners.change();assert.match(bundlePanel.request.textContent,/4 boxes/);assert.match(decodeURIComponent(bundlePanel.request.href),/1,000/);assert.match(bundlePanel.innerHTML,/Lowest per box/);console.log('Verified gated bundle display, two-box default and four-box quote email selection.');

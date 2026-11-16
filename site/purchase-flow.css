@@ -1,0 +1,53 @@
+/* Customer inquiry and review. */
+.purchase-progress{display:flex;gap:8px;list-style:none;padding:0;margin:0 0 28px;font-size:12px;font-weight:600;color:#526980}
+.purchase-progress li{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+.purchase-progress li::before{content:'';width:8px;height:8px;flex:0 0 8px;background:#c6d3e0;border-radius:50%}
+.purchase-progress [aria-current="step"]{color:#163d61}.purchase-progress [aria-current="step"]::before{background:#163d61}
+.purchase-progress .complete::before{background:#608776}
+.quote-review{border:1px solid #d6e1ec;border-radius:18px;padding:22px;background:#f5f8fc;color:#193653}
+.quote-review h3{font-size:24px;margin:0 0 18px}.quote-review dl{margin:0}
+.quote-review dl>div{display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid #d6e1ec}
+.quote-review dt{font-size:14px;color:#526980}.quote-review dd{font-size:15px;font-weight:600;margin:0;text-align:right;overflow-wrap:anywhere;min-width:0}
+.quote-review .review-contact dd{font-size:13px}.quote-review .review-total{font-size:21px}
+.quote-review .review-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.purchase-edit{min-height:44px;padding:10px 16px;border:1px solid #a9bdcf;border-radius:28px;background:white;color:#193653;font:inherit;cursor:pointer}
+.purchase-flow [hidden]{display:none!important}
+.purchase-flow .btn{min-height:48px;cursor:pointer;font:inherit;font-weight:650}
+#apply .quote-review .note{color:#526980}
+.quote-review-note{font-size:14px;color:#526980;margin-top:16px}
+.order-page{max-width:1100px;margin:auto;padding:42px 28px 64px}
+.order-page h1{font-size:clamp(30px,4vw,45px);line-height:1.13;letter-spacing:-1.1px;margin:10px 0 12px}
+.order-page .order-intro{max-width:620px;color:#526980;font-size:16px;line-height:1.6}
+.order-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.85fr);gap:28px;align-items:start;margin-top:30px}
+#submitted-offer{margin:0;padding:0;background:transparent;border:0;border-radius:0;min-width:0}
+#submitted-offer h2{font-size:clamp(25px,3vw,31px);letter-spacing:-.6px;margin:4px 0 12px}
+.bundle-product-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;padding:0;margin:0 0 24px;min-width:0}
+.bundle-product-switch legend,.bundle-options legend{font-size:13px;font-weight:600;margin-bottom:10px;color:#526980}
+.bundle-product-switch label{position:relative;display:flex;align-items:center;gap:8px;padding:12px;border:1px solid #c4d3e1;border-radius:12px;background:#fff;cursor:pointer;font-size:14px;font-weight:600}
+.bundle-product-switch label:has(:checked){border-color:#193d61;background:#eaf2fb}
+#submitted-offer input[type="radio"],#submitted-offer input[type="checkbox"]{width:17px;height:17px;min-height:17px;flex:0 0 17px;margin:0;accent-color:#193d61}
+.bundle-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0 16px;border:0;padding:0;min-width:0}
+.bundle-option{position:relative;display:block;min-width:0;padding:19px 16px;border:1px solid #c4d3e1;border-radius:17px;background:white;cursor:pointer;line-height:1.5}
+.bundle-option:has(:checked){background:#edf4fc;border:2px solid #193d61;padding:18px 15px;box-shadow:0 5px 18px #1635520a}
+.bundle-option input{position:absolute;right:15px;top:20px}
+.bundle-option strong,.bundle-option small{display:block}.bundle-option .bundle-title{padding-right:22px;font-size:17px}.bundle-option .bundle-price{font-size:30px;line-height:1.2;letter-spacing:-1px;margin:17px 0 4px;font-weight:650}
+.bundle-option small{font-size:12px;font-weight:400;color:#526980}.bundle-option .bundle-saving{color:#375f50;font-weight:600;margin-top:9px;min-height:18px}
+.bundle-option .bundle-label{font-size:11px;color:#193d61;font-weight:650;margin-top:4px;min-height:16px}
+.first-order-check{display:flex;gap:10px;align-items:start;margin:16px 0;padding:15px;background:#f0f5fb;border-radius:12px;font-size:14px}
+.order-aside{border:1px solid #d6e1ec;border-radius:22px;background:#f0f5fb;overflow:hidden}
+.order-aside img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;background:#eaf1f8}
+.order-aside figcaption{font-size:11px;padding:9px 20px;color:#526980}.order-aside figure{margin:0}
+.order-aside-content{padding:10px 24px 24px}.order-aside h2{font-size:21px;margin:8px 0 16px}.order-aside p,.order-aside li{font-size:14px;color:#526980;line-height:1.65}
+.order-aside ol{padding-left:20px}.order-aside li{padding-left:5px;margin:12px 0}
+.order-aside .order-trust{border-top:1px solid #d6e1ec;padding-top:16px;font-size:12px}
+.order-next{border-top:1px solid #d6e1ec;padding-top:20px;margin-top:28px;font-size:14px}
+.bundle-success{padding:25px;border:1px solid #b8d1c4;border-radius:18px;background:#f0f7f3}.bundle-success h2{color:#284f40}.bundle-success p{font-size:15px;line-height:1.65}.bundle-success a{display:inline-block;margin-top:12px}
+.bundle-status{font-size:14px;color:#526980;min-height:22px;margin-top:12px}.bundle-status[role="alert"]{color:#9d3131}
+.order-review .review-actions .btn{flex:1;min-width:160px}
+@media(max-width:760px){.order-page{padding:28px 18px 44px}.order-layout{grid-template-columns:minmax(0,1fr);gap:28px}.order-aside{display:grid;grid-template-columns:minmax(0,1fr)}.order-aside figure{display:none}.order-aside-content{padding:18px 22px}.order-page .purchase-progress{gap:5px;font-size:11px}.order-page .purchase-progress li{gap:5px}.order-page h1{max-width:330px}.bundle-option{padding:17px 12px}.bundle-option:has(:checked){padding:16px 11px}.bundle-option .bundle-price{font-size:28px}.bundle-option .bundle-title{font-size:16px}.bundle-option input{right:11px;top:18px}.quote-review{padding:18px}.quote-review dl>div{gap:10px}.quote-review .review-actions{flex-direction:column}.purchase-edit{width:100%}.quote-review dd{max-width:64%}.bundle-product-switch label{font-size:12px;padding:12px 9px}.bundle-options{gap:9px}}
+@media(prefers-reduced-motion:no-preference){.bundle-option,.bundle-product-switch label{transition:background .15s,border-color .15s}}
+
+#submitted-offer .bundle-option .bundle-saving,#submitted-offer .bundle-option .bundle-label{font-weight:600}
+.formbox:has(#inquiry-review:not([hidden])) #quote-product-summary{display:none}
+
+.order-layout:has(#submitted-offer:not([hidden])) #offer-unavailable{display:none}

@@ -5,12 +5,13 @@ const code=await readFile('site/quote.js','utf8');
 function mount(query){
  const listeners={};
  const product={value:'',addEventListener:(name,fn)=>{listeners[name]=fn;}};
+ const quantity={value:'',addEventListener:(name,fn)=>{listeners['quantity:'+name]=fn;}};
  const offer={hidden:true},coupon={disabled:true,value:''};
- const form={elements:{product},addEventListener:(name,fn)=>{listeners['form:'+name]=fn;},getAttribute:()=>'/customer-confirmation'};
+ const form={elements:{product,quantity},addEventListener:(name,fn)=>{listeners['form:'+name]=fn;},getAttribute:()=>'/customer-confirmation'};
  const doc={querySelector:(selector)=>({'[data-quote-form]':form,'#c-offer':offer,'#offer-code':coupon}[selector]??null)};
  const location={pathname:'/customer/',search:query,hash:'',replace:()=>{},assign:()=>{}};
  runInNewContext(code,{URLSearchParams,location,document:doc,window:{addEventListener:()=>{}},crypto:{randomUUID:()=> '12345678-1234-1234-1234-123456789000'}});
- return {product,offer,coupon,listeners};
+ return {product,quantity,offer,coupon,listeners};
 }
 let x=mount('?product=c');
 assert.equal(x.product.value,'BioRNA-C');
@@ -32,3 +33,5 @@ assert.equal(x.offer.hidden,true);
 assert.equal(x.coupon.value,'');
 assert.equal(x.product.value,'BioRNA Daily (Antiscar)');
 console.log('Quote selection, first-order offer prefill, custom codes, and product switching passed.');
+
+x=mount('?product=c');x.quantity.value='4';x.listeners['quantity:input']();assert.equal(x.coupon.disabled,true);assert.equal(x.coupon.value,'');x.quantity.value='1';x.listeners['quantity:input']();assert.equal(x.coupon.value,'SMOOTH20');
