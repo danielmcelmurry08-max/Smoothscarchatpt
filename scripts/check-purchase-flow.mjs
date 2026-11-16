@@ -14,18 +14,18 @@ for (const html of [customer, product]) {
  }
 }
 const quote = customer.split('id="apply"')[1].split('id="silicone-comparison"')[0];
-assert.deepEqual([...new Set([...quote.matchAll(/\$([\d,]+)/g)].map(match => match[1]))].sort(), ['300','375']);
+assert.deepEqual([...new Set([...quote.matchAll(/\$([\d,]+)/g)].map(match => match[1]))].sort(), ['18','25','300','375']);
 assert.ok(!quote.includes('data-review-subtotal'));
 assert.ok(!confirmation.includes('submitted-offer') && !confirmation.includes('Choose your supply'));
 assert.match(customer,/id="inquiry-review" hidden/);
 assert.match(customer,/type="submit" data-direct-submit/);
-function mount(product, quantity) {
+function mount(product, quantity, promo_code = '') {
  const nodes = new Map();
  const node = selector => {
   if (!nodes.has(selector)) nodes.set(selector, {hidden:selector==='#inquiry-review', textContent:'', listeners:{}, addEventListener(name,fn){this.listeners[name]=fn;}, focus(){}});
   return nodes.get(selector);
  };
- const fields = Object.fromEntries(Object.entries({product,quantity,name:'Sample Customer',email:'sample@example.com',country:'United States',postal_code:'00000'}).map(([name,value])=>[name,{value}]));
+ const fields = Object.fromEntries(Object.entries({product,quantity,promo_code,name:'Sample Customer',email:'sample@example.com',country:'United States',postal_code:'00000'}).map(([name,value])=>[name,{value}]));
  const form = node('form[name="customer-quotes"]');
  form.elements = fields;form.reportValidity = ()=>true;form.querySelector = node;
  const review = node('#inquiry-review');review.querySelector = node;
@@ -44,3 +44,8 @@ for(const quantity of ['1','4','10000']) {
 }
 assert.equal(mount('','').node('[data-review-price]').textContent,'Daily $300 · BioRNA-C $375 MSRP');
 console.log('Verified public bundle totals and links, MSRP-only quote review at all quantities, review/edit and plain confirmation.');
+
+const firstOrder = mount('BioRNA-C', '1', ' smooth20 ');
+assert.equal(firstOrder.form.elements.promo_code.value, 'SMOOTH20');
+assert.match(firstOrder.node('[data-review-promo]').textContent, /\$300 per box on an eligible first order/);
+assert.match(mount('BioRNA Daily (Antiscar)', '1', 'SMOOTH20').node('[data-review-promo]').textContent, /only to a first BioRNA-C order/);

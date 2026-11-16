@@ -24,7 +24,7 @@ window.addEventListener('pageshow',()=>{const form=document.querySelector('[data
  const summary=document.querySelector('#quote-product-summary');
  if(!form||!summary)return;
  const daily='<p><strong>BioRNA Daily (Antiscar) — $300/box, 7 patches, nightly 8 hours.</strong></p>';
- const c='<p><strong>BioRNA-C — $375 MSRP/box, 8 patches, twice a week.</strong> Wear 8–12 hours overnight. Contact us for current offers.</p>';
+ const c='<p><strong>BioRNA-C — $375 MSRP/box, 8 patches, twice a week.</strong> Wear 8–12 hours overnight.</p>';
  const update=()=>{const value=form.elements.product.value;summary.innerHTML=value==='BioRNA-C'?c:value==='BioRNA Daily (Antiscar)'?daily:daily+c;};
  form.elements.product.addEventListener('change',update);update();
 })();
