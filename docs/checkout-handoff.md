@@ -1,6 +1,6 @@
 # Customer pricing and quote flow
 
-The customer and BioRNA-C product pages display public multibox options. BioRNA-C prices are $375 for one box, $600 for two, $825 for three and $1,000 for four. Daily remains $300 per box.
+The customer and both product pages display public multibox options. BioRNA-C prices are $375 for one box, $600 for two, $825 for three and $1,000 for four. Daily prices are $300 for one box, $515 for two, $710 for three and $880 for four.
 
 Bundle links carry product and quantity into `/customer/#apply`. The existing form fields and review/edit step are preserved. The quote section and its review show unit prices only, Daily $300 per box and BioRNA-C $375 MSRP per box. They do not calculate or suggest bundle totals. The confirmation page simply acknowledges the inquiry and explains follow-up. The team confirms eligible bundle pricing in the itemized quote.
 
