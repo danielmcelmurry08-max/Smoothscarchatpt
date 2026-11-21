@@ -210,3 +210,9 @@ textarea,input,select{min-width:0}
 /* Hero v6 portrait: let the tall concept image fill more of the hero column (landscape images are unaffected). */
 .hero-inner>.real-product img{max-height:640px}
 .duo-below-hero{margin-top:0}
+
+/* Nov 21 bug fixes — see website-audit-2026-11-21.md */
+.dark .formbox .note{color:var(--muted)}
+.closing-cta{padding-bottom:40px}
+h2,h3{scroll-margin-top:110px}
+@media(min-width:761px){.conversion-update .testimonial-card{flex:0 0 min(86%,calc((100% - 36px)/3))}}
