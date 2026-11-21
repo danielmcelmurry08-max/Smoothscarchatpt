@@ -16,6 +16,6 @@ assert.equal(mount('?product=c').product.value,'BioRNA-C');
 assert.equal(mount('?product=daily').product.value,'BioRNA Daily (Antiscar)');
 assert.equal(mount('?product=c&quantity=4').quantity.value,'4');
 for(const quantity of ['0','-1','5','2.5','invalid'])assert.equal(mount('?product=c&quantity='+quantity).quantity.value,'');
-assert.match(await readFile('site/customer/index.html','utf8'),/name="promo_code"/);
+assert.doesNotMatch(await readFile('site/customer/index.html','utf8'),/name="promo_code"/);
 assert.doesNotMatch(await readFile('site/provider/index.html','utf8'),/promo_code|SMOOTH20/);
 console.log('Verified product selection, quantity and consumer-only promo field.');

@@ -45,7 +45,3 @@ for(const quantity of ['1','4','10000']) {
 assert.equal(mount('','').node('[data-review-price]').textContent,'Daily $300 · BioRNA-C $375 MSRP');
 console.log('Verified public bundle totals and links, MSRP-only quote review at all quantities, review/edit and plain confirmation.');
 
-const firstOrder = mount('BioRNA-C', '1', ' smooth20 ');
-assert.equal(firstOrder.form.elements.promo_code.value, 'SMOOTH20');
-assert.match(firstOrder.node('[data-review-promo]').textContent, /\$300 per box on an eligible first order/);
-assert.match(mount('BioRNA Daily (Antiscar)', '1', 'SMOOTH20').node('[data-review-promo]').textContent, /only to a first BioRNA-C order/);

@@ -17,15 +17,9 @@
   setText('[data-review-contact]', fields.email.value);
   setText('[data-review-shipping]', [fields.country.value, fields.postal_code.value].filter(Boolean).join(' · ') || 'Confirm with our team');
   setText('[data-review-price]', fields.product.value ? daily ? '$300 per box' : '$375 MSRP per box' : 'Daily $300 · BioRNA-C $375 MSRP');
-  const promo = fields.promo_code?.value.trim().toUpperCase() || '';
-  if (fields.promo_code) fields.promo_code.value = promo;
-  let promoMessage = promo || 'None entered';
-  if (promo === 'SMOOTH20') {
-   promoMessage = fields.product.value === 'BioRNA-C'
-    ? 'SMOOTH20 · $300 per box on an eligible first order. Your itemized quote confirms your price.'
-    : 'SMOOTH20 applies only to a first BioRNA-C order.';
-  }
-  setText('[data-review-promo]', promoMessage);
+  const prices = daily ? [300, 515, 710, 880] : [375, 600, 825, 1000];
+  const total = Number.isInteger(quantity) && quantity >= 1 && quantity <= 4 && fields.product.value ? prices[quantity - 1] : null;
+  setText('[data-review-bundle]', total ? '$' + total.toLocaleString('en-US') + ' before shipping and tax' : 'Confirmed in your itemized quote');
   details.hidden = true;
   review.hidden = false;
   review.querySelector('h3').focus();

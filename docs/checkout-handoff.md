@@ -7,5 +7,3 @@ Bundle links carry product and quantity into `/customer/#apply`. The existing fo
 No payment is collected on the website. Shipping, tax, availability and eligibility are confirmed by the team. The merchant processor is pending selection. Once selected, connect its hosted payment flow with server-side price validation, shipping/tax settings and verified payment notifications. Configure inventory, fulfillment and return terms from the business's actual settings before enabling paid checkout.
 
 `npm test` validates the public bundle totals, product/quantity handoff, MSRP-only review, preserved form fields, submission failure handling and existing provider workflows without sending real inquiries.
-
-Customer inquiries include the optional promo_code field. When preparing the itemized quote, verify first-order eligibility before applying SMOOTH20 to BioRNA-C at $300 per box. Honor a lower published bundle price. Daniel sends provider pricing directly.
