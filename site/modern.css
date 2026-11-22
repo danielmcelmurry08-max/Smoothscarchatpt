@@ -223,3 +223,17 @@ footer{padding-top:32px}
 .evidence-stories{padding-top:0;margin-top:0}
 .fit-steps .wrap{padding-bottom:36px}
 .dark#apply .wrap{padding-top:36px}
+
+/* Header fix (Nov 21): keep the desktop header on one row — the Customer
+   navlinks run ~20px wider than the homepage's, which tipped the social
+   icons onto a second row (~145px header) and clipped the #apply heading
+   by ~10px. Also give anchor jumps + the page bottom more clearance so
+   the last heading can scroll clear of the sticky header. */
+@media(min-width:1101px){
+  .conversion-update header nav{flex-wrap:nowrap}
+  .conversion-update header .navlinks{gap:10px}
+  .conversion-update header .navlinks>a:not(.btn){padding:8px 9px}
+  html{scroll-padding-top:120px}
+  h2,h3{scroll-margin-top:130px}
+}
+footer{padding-bottom:130px}
