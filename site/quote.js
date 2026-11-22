@@ -25,8 +25,22 @@ window.addEventListener('pageshow',()=>{const form=document.querySelector('[data
  if(!form||!summary)return;
  const daily='<p><strong>BioRNA Daily (Antiscar) — $300/box, 7 patches, nightly 8 hours.</strong></p>';
  const c='<p><strong>BioRNA-C — $375 MSRP/box, 8 patches, twice a week.</strong> Wear 8–12 hours overnight.</p>';
- const update=()=>{const value=form.elements.product.value;summary.innerHTML=value==='BioRNA-C'?c:value==='BioRNA Daily (Antiscar)'?daily:daily+c;};
- form.elements.product.addEventListener('change',update);update();
+ const bundles={'BioRNA Daily (Antiscar)':{single:300,packs:{1:300,2:515,3:710,4:880}},'BioRNA-C':{single:375,packs:{1:375,2:600,3:825,4:1000}}};
+ const money=n=>'$'+n.toLocaleString('en-US');
+ const update=()=>{
+  const value=form.elements.product.value;
+  const base=value==='BioRNA-C'?c:value==='BioRNA Daily (Antiscar)'?daily:daily+c;
+  const qty=Math.floor(Number(form.elements.quantity&&form.elements.quantity.value));
+  const price=bundles[value];
+  if(!price||!Number.isInteger(qty)||qty<1){summary.innerHTML=base;return;}
+  const total=qty<=4?price.packs[qty]:price.packs[4]+(qty-4)*price.single;
+  const save=qty*price.single-total;
+  const boxes=qty===1?'1 box':qty+' boxes';
+  summary.innerHTML=base+'<p><strong>'+boxes+': '+money(total)+' total'+(save>0?' · Save '+money(save)+' vs individual boxes':'')+'.</strong></p>';
+ };
+ form.elements.product.addEventListener('change',update);
+ if(form.elements.quantity)form.elements.quantity.addEventListener('input',update);
+ update();
 })();
 
 // Keep the floating shortcut out of the way while the quote section is visible.
