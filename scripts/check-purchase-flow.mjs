@@ -19,13 +19,13 @@ assert.ok(!quote.includes('data-review-subtotal'));
 assert.ok(!confirmation.includes('submitted-offer') && !confirmation.includes('Choose your supply'));
 assert.match(customer,/id="inquiry-review" hidden/);
 assert.match(customer,/type="submit" data-direct-submit/);
-function mount(product, quantity, promo_code = '') {
+function mount(product, quantity) {
  const nodes = new Map();
  const node = selector => {
   if (!nodes.has(selector)) nodes.set(selector, {hidden:selector==='#inquiry-review', textContent:'', listeners:{}, addEventListener(name,fn){this.listeners[name]=fn;}, focus(){}});
   return nodes.get(selector);
  };
- const fields = Object.fromEntries(Object.entries({product,quantity,promo_code,name:'Sample Customer',email:'sample@example.com',country:'United States',postal_code:'00000'}).map(([name,value])=>[name,{value}]));
+ const fields = Object.fromEntries(Object.entries({product,quantity,name:'Sample Customer',email:'sample@example.com',country:'United States',postal_code:'00000'}).map(([name,value])=>[name,{value}]));
  const form = node('form[name="customer-quotes"]');
  form.elements = fields;form.reportValidity = ()=>true;form.querySelector = node;
  const review = node('#inquiry-review');review.querySelector = node;
@@ -33,15 +33,14 @@ function mount(product, quantity, promo_code = '') {
  node('#review-inquiry').listeners.click();
  return {node,form};
 }
-for(const quantity of ['1','4','10000']) {
- let flow = mount('BioRNA-C',quantity);
- assert.equal(flow.node('[data-review-price]').textContent,'$375 MSRP per box');
+for(const [product, quantity, price, bundle] of [['BioRNA-C','1','$375 MSRP per box','$375 before shipping and tax'],['BioRNA-C','4','$375 MSRP per box','$1,000 before shipping and tax'],['BioRNA-C','10000','$375 MSRP per box','Confirmed in your itemized quote'],['BioRNA Daily (Antiscar)','1','$300 per box','$300 before shipping and tax'],['BioRNA Daily (Antiscar)','2','$300 per box','$515 before shipping and tax'],['BioRNA Daily (Antiscar)','4','$300 per box','$880 before shipping and tax']]) {
+ let flow = mount(product,quantity);
+ assert.equal(flow.node('[data-review-price]').textContent,price);
+ assert.equal(flow.node('[data-review-bundle]').textContent,bundle);
  assert.equal(flow.node('#inquiry-review').hidden,false);
  flow.node('#edit-inquiry').listeners.click();
  assert.equal(flow.node('#inquiry-review').hidden,true);
- flow = mount('BioRNA Daily (Antiscar)',quantity);
- assert.equal(flow.node('[data-review-price]').textContent,'$300 per box');
 }
 assert.equal(mount('','').node('[data-review-price]').textContent,'Daily $300 · BioRNA-C $375 MSRP');
-console.log('Verified public bundle totals and links, MSRP-only quote review at all quantities, review/edit and plain confirmation.');
-
+assert.equal(mount('','').node('[data-review-bundle]').textContent,'Confirmed in your itemized quote');
+console.log('Verified public bundle totals and links, bundle-total quote review at all quantities, review/edit and plain confirmation.');
