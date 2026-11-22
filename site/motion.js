@@ -85,6 +85,7 @@
     function (el) {
       if (el.closest('#apply .formbox')) return false;
       if (el.closest('.mobile-slider, .slider-option, .comparison-stage')) return false;
+      if (el.closest('.pairs-carousel')) return false;
       if (el.closest('header, footer')) return false;
       if (el.closest('.hero-copy, .product-detail .split')) return false;
       return true;
