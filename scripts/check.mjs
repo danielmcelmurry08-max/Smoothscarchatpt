@@ -18,7 +18,7 @@ for(const html of [hub,customer,provider,daily,c]){
  assert.ok(!html.includes('25%'));
  assert.ok(!/BioRNA Daily(?! \(Antiscar\))|BioRNA Antiscar/.test(html),'Full product name required');
  assert.ok(html.includes('mailto:contact@smoothscar.com'));
- assert.ok(!html.includes('suggested 6')&&!html.includes('6–8-week')&&!html.includes('eligible offer')&&!html.includes('guaranteed time to a result'),'No course-duration or offer language');
+ assert.ok(!html.includes('suggested 6')&&!html.includes('6–8-week')&&!html.includes('eligible offer')&&!html.includes('guaranteed time to a result')&&!html.includes('AI-enhanced')&&!html.includes('AI-generated')&&!html.includes('Concept illustration'),'No course-duration, offer or AI-label language');
 }
 new Function(quote);
 assert.ok(!quote.includes("SMOOTH20"));
