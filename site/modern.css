@@ -240,3 +240,12 @@ footer{padding-bottom:200px}
 
 .mobile-slider{display:none}
 @media(max-width:760px){.result-photos{display:none}.slider-option{display:none}.mobile-slider{display:block;margin-top:24px}.mobile-slider label{display:block;margin-top:16px}.mobile-slider .result-range{display:block;width:100%}.slider-day{position:absolute;top:12px;z-index:4;padding:6px 10px;background:#122c49d9;color:#fff;font-size:11px;letter-spacing:.06em;border-radius:30px;pointer-events:none}.slider-day-before{left:12px}.slider-day-after{right:12px}}
+
+/* Make-it-better package, Nov 22 2026: spacing + Daily How-to + #apply balance */
+.home-below-hero{padding-bottom:28px}
+.closing-cta{padding-top:24px}
+.feature-comparison th,.feature-comparison td{padding:14px 16px}
+#apply .split{align-items:center}
+#apply .quote-at-glance p{margin:6px 0}
+.how-to-section{padding-top:36px;padding-bottom:48px}
+.how-to-section .product-photo{max-width:720px}
