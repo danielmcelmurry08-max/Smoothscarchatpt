@@ -230,10 +230,10 @@ footer{padding-top:32px}
    by ~10px. Also give anchor jumps + the page bottom more clearance so
    the last heading can scroll clear of the sticky header. */
 @media(min-width:1101px){
-  .conversion-update header nav{flex-wrap:nowrap}
-  .conversion-update header .navlinks{gap:10px}
-  .conversion-update header .navlinks>a:not(.btn){padding:8px 9px}
+  .conversion-update header nav{flex-wrap:nowrap;gap:8px}
+  .conversion-update header .navlinks{gap:6px}
+  .conversion-update header .navlinks>a:not(.btn){padding:8px 6px}
   html{scroll-padding-top:120px}
   h2,h3{scroll-margin-top:130px}
 }
-footer{padding-bottom:130px}
+footer{padding-bottom:200px}
