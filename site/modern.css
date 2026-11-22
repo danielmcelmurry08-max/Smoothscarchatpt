@@ -249,3 +249,7 @@ footer{padding-bottom:200px}
 #apply .quote-at-glance p{margin:6px 0}
 .how-to-section{padding-top:36px;padding-bottom:48px}
 .how-to-section .product-photo{max-width:720px}
+
+/* Three spots package, Nov 22 2026: study-highlight full width + tight top on hub/guides */
+.study-highlight{max-width:none}
+.tight-top{padding-top:32px}
