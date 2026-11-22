@@ -236,7 +236,6 @@ footer{padding-top:32px}
   html{scroll-padding-top:120px}
   h2,h3{scroll-margin-top:130px}
 }
-footer{padding-bottom:200px}
 
 .mobile-slider{display:none}
 @media(max-width:760px){.result-photos{display:none}.slider-option{display:none}.mobile-slider{display:block;margin-top:24px}.mobile-slider label{display:block;margin-top:16px}.mobile-slider .result-range{display:block;width:100%}.slider-day{position:absolute;top:12px;z-index:4;padding:6px 10px;background:#122c49d9;color:#fff;font-size:11px;letter-spacing:.06em;border-radius:30px;pointer-events:none}.slider-day-before{left:12px}.slider-day-after{right:12px}}
@@ -258,3 +257,5 @@ footer{padding-bottom:200px}
 #apply .split{align-items:start}
 .apply-quote{margin-top:24px;border-left:3px solid #8fb4dd;padding-left:16px}
 .apply-quote p{margin:6px 0}
+/* Footer + patch crop, Nov 22 2026: the tight patch crop is 1200x340, but .product-photo img forces aspect-ratio 3/2 with object-fit contain, which letterboxes it back to a tall frame. This override lets the tight crop display as the strip it is. Tray/box photos keep 3/2. */
+.product-photo img[src*="patch-studio-v1-tight"]{aspect-ratio:1200/340}
