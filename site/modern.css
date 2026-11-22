@@ -259,3 +259,8 @@ footer{padding-top:32px}
 .apply-quote p{margin:6px 0}
 /* Footer + patch crop, Nov 22 2026: the tight patch crop is 1200x340, but .product-photo img forces aspect-ratio 3/2 with object-fit contain, which letterboxes it back to a tall frame. This override lets the tight crop display as the strip it is. Tray/box photos keep 3/2. */
 .product-photo img[src*="patch-studio-v1-tight"]{aspect-ratio:1200/340}
+
+/* Motion package, Nov 22 2026: Lenis smooth-scroll base rules. Active only when motion.js starts Lenis (it adds .lenis to <html>); without JS, or on touch/reduced-motion, the page keeps its native smooth scroll. */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
