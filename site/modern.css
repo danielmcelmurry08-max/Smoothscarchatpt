@@ -231,8 +231,8 @@ footer{padding-top:32px}
    the last heading can scroll clear of the sticky header. */
 @media(min-width:1101px){
   .conversion-update header nav{flex-wrap:nowrap;gap:8px}
-  .conversion-update header .navlinks{gap:6px}
-  .conversion-update header .navlinks>a:not(.btn){padding:8px 6px}
+  .conversion-update header .navlinks{gap:4px}
+  .conversion-update header .navlinks>a:not(.btn){padding:8px 4px;font-size:11px}
   html{scroll-padding-top:120px}
   h2,h3{scroll-margin-top:130px}
 }
