@@ -253,3 +253,8 @@ footer{padding-bottom:200px}
 /* Three spots package, Nov 22 2026: study-highlight full width + tight top on hub/guides */
 .study-highlight{max-width:none}
 .tight-top{padding-top:32px}
+
+/* Bug-fix round, Nov 22 2026: #apply top-align + quote */
+#apply .split{align-items:start}
+.apply-quote{margin-top:24px;border-left:3px solid #8fb4dd;padding-left:16px}
+.apply-quote p{margin:6px 0}
