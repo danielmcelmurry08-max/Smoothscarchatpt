@@ -288,3 +288,10 @@ html.js-carousel .pairs-controls{display:flex;align-items:center;justify-content
 .conversion-update .testimonial-card,.conversion-update .manufacturer-quotes>figure{flex:none;width:auto;max-width:100%;margin:0}
 .conversion-update .swipe-note{display:none}
 }
+
+/* Word-split headline animation (motion.js, Bright-style lettering).
+   The wraps exist only when JS splits a heading; without JS the
+   heading is plain text. Bottom padding keeps descenders (g, y, p)
+   from clipping inside overflow:hidden. */
+.w-wrap{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.15em;margin-bottom:-.15em}
+.w-inner{display:inline-block;will-change:transform}

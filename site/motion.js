@@ -2,8 +2,10 @@
    GSAP 3.15.1 + ScrollTrigger + Lenis 1.3.27, all self-hosted under
    /assets/vendor/ (the site CSP is script-src 'self', so no CDN).
    Four effects: hero entrance, scroll reveals, number counters +
-   chart bars, and smooth scrolling on fine-pointer devices.
-   Additive only: nothing is hidden by CSS. Every starting state is
+   chart bars, and smooth scrolling on fine-pointer devices — plus
+   Bright-style word-split headlines (h1 on load, h2 on scroll) and
+   image drift / clip reveals. The word split and image effects are
+   additive only: nothing is hidden by CSS. Every starting state is
    applied by JS, so if a library fails to load — or the visitor
    prefers reduced motion — the page renders exactly as before. */
 (function () {
@@ -56,15 +58,63 @@
     window.ScrollTrigger.refresh();
   });
 
+  /* Word-split headline animation — Bright-style lettering. Splits a
+     heading's words into masked spans (JS-only; without JS the heading
+     is plain text). Whitespace stays as text nodes between the wraps,
+     so the heading still reads as normal text. Headings with links or
+     buttons, and headings with no layout box (hidden tab panels), are
+     left alone and render normally. <br> line breaks are preserved. */
+  function splitWords(el) {
+    if (!el || el.dataset.splitDone) return [];
+    if (el.querySelector('a, button')) return [];
+    if (!el.getClientRects().length) return [];
+    var inners = [];
+    (function walk(node) {
+      var child = node.firstChild;
+      while (child) {
+        var next = child.nextSibling;
+        if (child.nodeType === 3) {
+          child.nodeValue.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              node.insertBefore(document.createTextNode(part), child);
+            } else {
+              var wrap = document.createElement('span');
+              wrap.className = 'w-wrap';
+              var inner = document.createElement('span');
+              inner.className = 'w-inner';
+              inner.textContent = part;
+              wrap.appendChild(inner);
+              node.insertBefore(wrap, child);
+              inners.push(inner);
+            }
+          });
+          node.removeChild(child);
+        } else if (child.nodeType === 1 && child.tagName !== 'BR') {
+          walk(child);
+        }
+        child = next;
+      }
+    })(el);
+    el.dataset.splitDone = '1';
+    return inners;
+  }
+
   /* Hero entrance — homepage .hero; product pages use .product-detail.
      Transform-only on purpose: the headline stays visible on first paint
      (it slides up into place) instead of starting invisible. */
+  var heroH1 = document.querySelector('.hero-copy h1');
+  var heroWords = heroH1 ? splitWords(heroH1) : [];
   var heroCopy = document.querySelector('.hero-copy');
   if (heroCopy) {
-    var heroKids = heroCopy.querySelectorAll(':scope > *');
+    var heroKids = Array.prototype.filter.call(
+      heroCopy.querySelectorAll(':scope > *'),
+      function (el) { return el.tagName !== 'H1'; }
+    );
     var heroArt = document.querySelector('.hero-art');
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     tl.from(heroKids, { y: 28, duration: 0.9, stagger: 0.09 }, 0.1);
+    if (heroWords.length) tl.from(heroWords, { yPercent: 110, duration: 0.9, stagger: 0.05 }, 0.1);
     if (heroArt) tl.from(heroArt, { y: 24, scale: 0.985, duration: 1.0 }, 0.25);
   }
   var productSplit = document.querySelector('.product-detail .split');
@@ -73,11 +123,21 @@
     gsap.from(cells, { y: 28, duration: 0.9, stagger: 0.12, ease: 'power3.out', delay: 0.1 });
   }
 
+  /* Every other page headline gets the same word rise on load. Product
+     h1s sit inside a .split cell that keeps its slide — the word rise
+     layers inside it. */
+  document.querySelectorAll('h1').forEach(function (h1) {
+    if (h1.closest('.hero-copy, header, footer')) return;
+    var w = splitWords(h1);
+    if (w.length) gsap.from(w, { yPercent: 110, duration: 0.9, stagger: 0.05, ease: 'power3.out', delay: 0.2 });
+  });
+
   /* Scroll reveals — fade up once as each block enters view. Never the
      quote form, the drag sliders, the header/footer, or anything the
-     hero entrance already animates. */
+     hero entrance already animates. Section h2s are excluded here:
+     they get the word-split rise below instead. */
   var revealSelector = [
-    'main section > h2', 'main section > h3',
+    'main section > h3',
     '.card', '.testimonial-card', '.evidence-stat', '.study-highlight',
     '.metric', '.chart-row', '.product-photo', '.bundle-option',
     '.result-photos', '.feature-comparison', '.study-chart'
@@ -97,6 +157,27 @@
     gsap.from(el, {
       y: 24, opacity: 0, duration: 0.8, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    });
+  });
+
+  /* Section headings rise word by word as they enter view — the same
+     lettering treatment as the h1, on scroll instead of on load. */
+  Array.prototype.filter.call(
+    document.querySelectorAll('main section > h2'),
+    function (el) {
+      if (el.closest('#apply .formbox')) return false;
+      if (el.closest('.mobile-slider, .slider-option, .comparison-stage')) return false;
+      if (el.closest('.pairs-carousel')) return false;
+      if (el.closest('header, footer')) return false;
+      if (el.closest('.hero-copy, .product-detail .split')) return false;
+      return true;
+    }
+  ).forEach(function (h2) {
+    var words = splitWords(h2);
+    if (!words.length) return;
+    gsap.from(words, {
+      yPercent: 110, duration: 0.85, stagger: 0.045, ease: 'power3.out',
+      scrollTrigger: { trigger: h2, start: 'top 88%', once: true }
     });
   });
 
@@ -125,6 +206,38 @@
     gsap.from(bar, {
       width: '0%', duration: 1.2, ease: 'power3.out',
       scrollTrigger: { trigger: bar.closest('.chart-row') || bar, start: 'top 88%', once: true }
+    });
+  });
+
+  /* Image drift — Bright-style parallax. Figure-level drift only: the
+     frame stays put and the whole figure moves a few pixels, so no
+     image is ever cropped or re-framed. Desktop pointers only; touch
+     keeps native scroll. */
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.hero-art, .product-photo, .photo-strip figure').forEach(function (fig) {
+      if (fig.closest('.pairs-carousel')) return;
+      gsap.fromTo(fig, { yPercent: -1.5 }, { yPercent: 1.5, ease: 'none',
+        scrollTrigger: { trigger: fig, start: 'top bottom', end: 'bottom top', scrub: true } });
+    });
+  }
+
+  /* Image reveal — photos un-clip with a slight scale settle as they
+     enter view. Only images already loaded at setup, or that load
+     later (one-time listener); anything still unloaded, or that fails
+     to load, renders exactly as before. */
+  function clipReveal(img) {
+    if (!img.naturalWidth) return;
+    gsap.from(img, {
+      clipPath: 'inset(12% 8% 12% 8%)', scale: 1.07, duration: 1.1, ease: 'power3.out',
+      scrollTrigger: { trigger: img, start: 'top 90%', once: true }
+    });
+  }
+  document.querySelectorAll('.photo-strip img, .product-photo img').forEach(function (img) {
+    if (img.closest('.pairs-carousel, .mobile-slider, .slider-option, .comparison-stage')) return;
+    if (img.complete) clipReveal(img);
+    else img.addEventListener('load', function onload() {
+      img.removeEventListener('load', onload);
+      clipReveal(img);
     });
   });
 })();
