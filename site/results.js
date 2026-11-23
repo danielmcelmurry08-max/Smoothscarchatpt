@@ -41,6 +41,7 @@ document.querySelectorAll('.result-range').forEach(range => {
       if (j === index) dot.setAttribute('aria-current', 'true');
       else dot.removeAttribute('aria-current');
     });
+    fitHeight();
   }
   function autoAllowed() {
     return !reduceMotion && visible && !hovering && !document.hidden;
@@ -87,6 +88,26 @@ document.querySelectorAll('.result-range').forEach(range => {
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) clearTimeout(timer); else schedule();
   });
+  /* Fit the carousel height to the active slide: the flex track is as
+     tall as the tallest slide, so shorter slides showed whitespace below.
+     Re-fit on navigation, resize, image load, and when the
+     drag-to-compare disclosure opens. */
+  function fitHeight() {
+    var h = slides[index].offsetHeight;
+    if (h) carousel.style.height = h + 'px';
+  }
+  var resizeTimer = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(fitHeight, 150);
+  });
+  carousel.querySelectorAll('img').forEach(function (img) {
+    img.addEventListener('load', fitHeight);
+  });
+  carousel.querySelectorAll('details').forEach(function (d) {
+    d.addEventListener('toggle', fitHeight);
+  });
+  window.addEventListener('load', fitHeight);
   goTo(0);
   schedule();
 })();

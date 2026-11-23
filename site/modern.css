@@ -272,8 +272,8 @@ html.lenis,html.lenis body{height:auto}
    stack exactly as before and the controls stay hidden. */
 .pairs-carousel{margin-top:40px}
 .pairs-controls{display:none}
-html.js-carousel .pairs-carousel{overflow:hidden;position:relative}
-html.js-carousel .pairs-track{display:flex;transition:transform .6s ease}
+html.js-carousel .pairs-carousel{overflow:hidden;position:relative;transition:height .6s ease}
+html.js-carousel .pairs-track{display:flex;align-items:flex-start;transition:transform .6s ease}
 html.js-carousel .pairs-track>.result-pair{flex:0 0 100%;min-width:0;margin-top:0;padding-top:0;border-top:0}
 html.js-carousel .pairs-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:28px}
 .pairs-prev,.pairs-next{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:22px;line-height:1;cursor:pointer;flex:0 0 auto}
