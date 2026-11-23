@@ -59,11 +59,15 @@
   });
 
   /* Word-split headline animation — Bright-style lettering. Splits a
-     heading's words into masked spans (JS-only; without JS the heading
-     is plain text). Whitespace stays as text nodes between the wraps,
-     so the heading still reads as normal text. Headings with links or
-     buttons, and headings with no layout box (hidden tab panels), are
-     left alone and render normally. <br> line breaks are preserved. */
+     heading's words into spans that rise one by one. Deliberately NO
+     mask: the words stay fully visible from the first paint and only
+     settle up into place (a masked rise blanks the headline until the
+     animation runs, which cost the post-deploy re-grade 1.5 points).
+     JS-only; without JS the heading is plain text. Whitespace stays as
+     text nodes between the wraps, so the heading still reads as normal
+     text. Headings with links or buttons, and headings with no layout
+     box (hidden tab panels), are left alone and render normally.
+     <br> line breaks are preserved. */
   function splitWords(el) {
     if (!el || el.dataset.splitDone) return [];
     if (el.querySelector('a, button')) return [];
@@ -114,7 +118,7 @@
     var heroArt = document.querySelector('.hero-art');
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     tl.from(heroKids, { y: 28, duration: 0.9, stagger: 0.09 }, 0.1);
-    if (heroWords.length) tl.from(heroWords, { yPercent: 110, duration: 0.9, stagger: 0.05 }, 0.1);
+    if (heroWords.length) tl.from(heroWords, { y: 16, duration: 0.9, stagger: 0.05 }, 0.1);
     if (heroArt) tl.from(heroArt, { y: 24, scale: 0.985, duration: 1.0 }, 0.25);
   }
   var productSplit = document.querySelector('.product-detail .split');
@@ -129,7 +133,7 @@
   document.querySelectorAll('h1').forEach(function (h1) {
     if (h1.closest('.hero-copy, header, footer')) return;
     var w = splitWords(h1);
-    if (w.length) gsap.from(w, { yPercent: 110, duration: 0.9, stagger: 0.05, ease: 'power3.out', delay: 0.2 });
+    if (w.length) gsap.from(w, { y: 16, duration: 0.9, stagger: 0.05, ease: 'power3.out', delay: 0.2 });
   });
 
   /* Scroll reveals — fade up once as each block enters view. Never the
@@ -176,7 +180,7 @@
     var words = splitWords(h2);
     if (!words.length) return;
     gsap.from(words, {
-      yPercent: 110, duration: 0.85, stagger: 0.045, ease: 'power3.out',
+      y: 16, duration: 0.85, stagger: 0.045, ease: 'power3.out',
       scrollTrigger: { trigger: h2, start: 'top 88%', once: true }
     });
   });

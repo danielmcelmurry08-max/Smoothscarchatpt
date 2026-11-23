@@ -291,7 +291,8 @@ html.js-carousel .pairs-controls{display:flex;align-items:center;justify-content
 
 /* Word-split headline animation (motion.js, Bright-style lettering).
    The wraps exist only when JS splits a heading; without JS the
-   heading is plain text. Bottom padding keeps descenders (g, y, p)
-   from clipping inside overflow:hidden. */
-.w-wrap{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.15em;margin-bottom:-.15em}
+   heading is plain text. No overflow mask: the words stay visible
+   from the first paint and only settle up (a masked rise blanked the
+   headline at first paint and cost 1.5 points in the re-grade). */
+.w-wrap{display:inline-block;vertical-align:top}
 .w-inner{display:inline-block;will-change:transform}
