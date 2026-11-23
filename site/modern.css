@@ -270,17 +270,6 @@ html.lenis,html.lenis body{height:auto}
    stay inside every slide. Layout only applies when JS runs
    (results.js adds .js-carousel to <html>); without JS the pairs
    stack exactly as before and the controls stay hidden. */
-.pairs-carousel{margin-top:40px}
-.pairs-controls{display:none}
-html.js-carousel .pairs-carousel{overflow:hidden;position:relative;transition:height .6s ease}
-html.js-carousel .pairs-track{display:flex;align-items:flex-start;transition:transform .6s ease}
-html.js-carousel .pairs-track>.result-pair{flex:0 0 100%;min-width:0;margin-top:0;padding-top:0;border-top:0}
-html.js-carousel .pairs-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:28px}
-.pairs-prev,.pairs-next{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:22px;line-height:1;cursor:pointer;flex:0 0 auto}
-.pairs-dots{display:flex;gap:10px}
-.pairs-dots button{width:12px;height:12px;padding:0;border-radius:50%;border:1px solid var(--ink);background:transparent;cursor:pointer}
-.pairs-dots button[aria-current="true"]{background:var(--ink)}
-@media(max-width:760px){.pairs-prev,.pairs-next{width:40px;height:40px}}
 
 /* Package 8 — desktop grid for testimonial / patient-words rows: every card visible, no swipe needed. Mobile (max-width:760px) keeps the swipe strip; 761-900px keeps the existing strip. */
 @media(min-width:901px){

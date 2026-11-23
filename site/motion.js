@@ -151,7 +151,6 @@
     function (el) {
       if (el.closest('#apply .formbox')) return false;
       if (el.closest('.mobile-slider, .slider-option, .comparison-stage')) return false;
-      if (el.closest('.pairs-carousel')) return false;
       if (el.closest('header, footer')) return false;
       if (el.closest('.hero-copy, .product-detail .split')) return false;
       return true;
@@ -171,7 +170,6 @@
     function (el) {
       if (el.closest('#apply .formbox')) return false;
       if (el.closest('.mobile-slider, .slider-option, .comparison-stage')) return false;
-      if (el.closest('.pairs-carousel')) return false;
       if (el.closest('header, footer')) return false;
       if (el.closest('.hero-copy, .product-detail .split')) return false;
       return true;
@@ -180,7 +178,7 @@
     var words = splitWords(h2);
     if (!words.length) return;
     gsap.from(words, {
-      y: 16, duration: 0.85, stagger: 0.045, ease: 'power3.out',
+      y: 16, duration: 0.98, stagger: 0.052, ease: 'power3.out',
       scrollTrigger: { trigger: h2, start: 'top 88%', once: true }
     });
   });
@@ -219,7 +217,6 @@
      keeps native scroll. */
   if (window.matchMedia('(pointer: fine)').matches) {
     document.querySelectorAll('.hero-art, .product-photo, .photo-strip figure').forEach(function (fig) {
-      if (fig.closest('.pairs-carousel')) return;
       gsap.fromTo(fig, { yPercent: -1.5 }, { yPercent: 1.5, ease: 'none',
         scrollTrigger: { trigger: fig, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
@@ -237,7 +234,7 @@
     });
   }
   document.querySelectorAll('.photo-strip img, .product-photo img').forEach(function (img) {
-    if (img.closest('.pairs-carousel, .mobile-slider, .slider-option, .comparison-stage')) return;
+    if (img.closest('.mobile-slider, .slider-option, .comparison-stage')) return;
     if (img.complete) clipReveal(img);
     else img.addEventListener('load', function onload() {
       img.removeEventListener('load', onload);
