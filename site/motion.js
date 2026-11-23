@@ -56,19 +56,21 @@
     window.ScrollTrigger.refresh();
   });
 
-  /* Hero entrance — homepage .hero; product pages use .product-detail. */
+  /* Hero entrance — homepage .hero; product pages use .product-detail.
+     Transform-only on purpose: the headline stays visible on first paint
+     (it slides up into place) instead of starting invisible. */
   var heroCopy = document.querySelector('.hero-copy');
   if (heroCopy) {
     var heroKids = heroCopy.querySelectorAll(':scope > *');
     var heroArt = document.querySelector('.hero-art');
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    tl.from(heroKids, { y: 28, opacity: 0, duration: 0.9, stagger: 0.09 }, 0.1);
-    if (heroArt) tl.from(heroArt, { y: 24, opacity: 0, scale: 0.985, duration: 1.0 }, 0.25);
+    tl.from(heroKids, { y: 28, duration: 0.9, stagger: 0.09 }, 0.1);
+    if (heroArt) tl.from(heroArt, { y: 24, scale: 0.985, duration: 1.0 }, 0.25);
   }
   var productSplit = document.querySelector('.product-detail .split');
   if (productSplit) {
     var cells = productSplit.querySelectorAll(':scope > *');
-    gsap.from(cells, { y: 28, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out', delay: 0.1 });
+    gsap.from(cells, { y: 28, duration: 0.9, stagger: 0.12, ease: 'power3.out', delay: 0.1 });
   }
 
   /* Scroll reveals — fade up once as each block enters view. Never the
