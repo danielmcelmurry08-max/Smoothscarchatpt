@@ -18,7 +18,7 @@
 .order-page .order-intro { max-width: 620px; color: #526980; font-size: 16px; line-height: 1.6; margin-bottom: 28px; }
 /* Public product offers; quote review displays unit pricing only. */
 .public-bundles { scroll-margin-top: 100px; --offer-bg: #f5ddea; --offer-ink: #65133e; --offer-border: #c89fb3; }
-#daily-bundles { --offer-bg: #d9e4f3; --offer-ink: #22395e; --offer-border: #a0b3ca; }
+#antiscar-bundles { --offer-bg: #d9e4f3; --offer-ink: #22395e; --offer-border: #a0b3ca; }
 .public-bundles h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.12; color: var(--offer-ink); }
 .public-bundle-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 14px; margin: 28px 0 20px; }
 .public-bundles .bundle-option { display: flex; flex-direction: column; min-width: 0; padding: 22px 18px; border: 1px solid var(--offer-border); border-radius: 17px; background: var(--offer-bg); }

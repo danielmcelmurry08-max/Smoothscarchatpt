@@ -1,11 +1,12 @@
 (() => {
  const params=new URLSearchParams(location.search);
  if(location.hash==='#webinar'){location.replace('/customer/#apply');return;}
- if(location.pathname==='/' && ['#portfolio','#apply','#biorna-daily','#biorna-c','#science'].includes(location.hash) && params.get('intent')!=='provider'){location.replace('/customer/'+location.search+location.hash);return;}
+ if(location.pathname==='/' && ['#portfolio','#apply','#biorna-antiscar','#biorna-c','#science'].includes(location.hash) && params.get('intent')!=='provider'){location.replace('/customer/'+location.search+location.hash);return;}
  if(location.pathname==='/' && params.get('intent')==='provider'){location.replace('/provider/#apply');return;}
  const form=document.querySelector('[data-quote-form]'); if(!form)return;
  const product=form.elements.product;
- const requested=params.get('product');if(requested==='daily'||requested==='BioRNA Antiscar'||requested==='BioRNA Daily (Antiscar)')product.value='BioRNA Daily (Antiscar)';if(requested==='c'||requested==='BioRNA-C')product.value='BioRNA-C';
+ const requested=params.get('product');if(requested==='daily'||requested==='antiscar'||requested==='BioRNA Antiscar'||requested==='BioRNA Daily (Antiscar)')product.value='BioRNA AntiScar';if(requested==='c'||requested==='BioRNA-C')product.value='BioRNA-C';
+ const requestedSize=params.get('size');if(form.elements.size&&(requestedSize==='24'||requestedSize==='8'||requestedSize==='2'))form.elements.size.value=requestedSize;
  const requestedQuantity=Number(params.get('quantity'));if(form.elements.quantity&&Number.isInteger(requestedQuantity)&&requestedQuantity>=1&&requestedQuantity<=4)form.elements.quantity.value=String(requestedQuantity);
  form.addEventListener('submit',async event=>{
   event.preventDefault();if(!form.reportValidity())return;
@@ -23,23 +24,25 @@ window.addEventListener('pageshow',()=>{const form=document.querySelector('[data
  const form=document.querySelector('[data-quote-form]');
  const summary=document.querySelector('#quote-product-summary');
  if(!form||!summary)return;
- const daily='<p><strong>BioRNA Daily (Antiscar) — $300/box, 7 patches, nightly 8 hours.</strong></p>';
- const c='<p><strong>BioRNA-C — $375 MSRP/box, 8 patches, twice a week.</strong> Wear 8–12 hours overnight.</p>';
- const bundles={'BioRNA Daily (Antiscar)':{single:300,packs:{1:300,2:515,3:710,4:880}},'BioRNA-C':{single:375,packs:{1:375,2:600,3:825,4:1000}}};
+ const bundles={'BioRNA AntiScar':{2:{single:135,packs:{1:135}},8:{single:500,packs:{1:500,2:900,3:1250,4:1600}},24:{single:1250,packs:{1:1250,2:2250,3:3000}}},'BioRNA-C':{2:{single:135,packs:{1:135}},8:{single:500,packs:{1:500,2:900,3:1250,4:1600}},24:{single:1250,packs:{1:1250,2:2250,3:3000}}}};
  const money=n=>'$'+n.toLocaleString('en-US');
+ const line=(product,size)=>'<p><strong>'+product+' — $'+bundles[product][size].single.toLocaleString('en-US')+'/box, '+size+' patches, twice weekly 8–12 hours.</strong></p>';
  const update=()=>{
   const value=form.elements.product.value;
-  const base=value==='BioRNA-C'?c:value==='BioRNA Daily (Antiscar)'?daily:daily+c;
+  const size=form.elements.size&&form.elements.size.value||'8';
+  const base=value==='BioRNA-C'?line(value,size):value==='BioRNA AntiScar'?line(value,size):line('BioRNA AntiScar','8')+line('BioRNA-C','8');
   const qty=Math.floor(Number(form.elements.quantity&&form.elements.quantity.value));
-  const price=bundles[value];
-  if(!price||!Number.isInteger(qty)||qty<1){summary.innerHTML=base;return;}
-  const total=qty<=4?price.packs[qty]:price.packs[4]+(qty-4)*price.single;
-  const save=qty*price.single-total;
+  const ladder=bundles[value]&&bundles[value][size];
+  if(!ladder||!Number.isInteger(qty)||qty<1){summary.innerHTML=base;return;}
+  const maxPacks=size==='24'?3:size==='2'?1:4;
+  const total=qty<=maxPacks?ladder.packs[qty]:ladder.packs[maxPacks]+(qty-maxPacks)*ladder.single;
+  const save=qty*ladder.single-total;
   const boxes=qty===1?'1 box':qty+' boxes';
   summary.innerHTML=base+'<p><strong>'+boxes+': '+money(total)+' total'+(save>0?' · Save '+money(save)+' vs individual boxes':'')+'.</strong></p>';
  };
  form.elements.product.addEventListener('change',update);
  if(form.elements.quantity)form.elements.quantity.addEventListener('input',update);
+ if(form.elements.size)form.elements.size.addEventListener('change',update);
  update();
 })();
 

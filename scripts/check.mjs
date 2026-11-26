@@ -9,7 +9,7 @@ assert.ok(!customer.includes('name="role"')&&!customer.includes('name="practice"
 assert.ok(provider.includes('name="practice"')&&provider.includes('name="role"'));
 assert.ok(!provider.includes('SMOOTH20')&&!provider.includes('$350')&&!provider.includes('$300'));
 assert.ok(!daily.includes('SMOOTH20')&&!daily.includes('20%'));
-assert.ok(!c.includes('SMOOTH20')&&!c.includes('20%')&&c.includes('BioRNA-C')&&c.includes('$375 per box')&&c.includes('id="bundles"'));
+assert.ok(!c.includes('SMOOTH20')&&!c.includes('20%')&&c.includes('BioRNA-C')&&c.includes('$500 per box')&&c.includes('id="bundles"'));
 for(const section of ['hero']){
  const area=section==='hero'?customer.split('<section class="hero">')[1].split('</section>')[0]:customer.split('id="portfolio"')[1].split('</section>')[0];
  assert.ok(!/\$\d|SMOOTH20/.test(area),'No prices in customer '+section);
@@ -24,6 +24,6 @@ new Function(quote);
 assert.ok(!quote.includes("SMOOTH20"));
 assert.ok(customer.includes('action="/customer-confirmation"'));
 assert.ok(provider.includes('action="/provider-confirmation"'));
-assert.ok(customer.includes('$300 per box')&&customer.includes('Request Daily quote')&&customer.includes('Compare BioRNA-C bundles'));
+assert.ok(customer.includes('$500 per box')&&customer.includes('Request AntiScar quote')&&customer.includes('Compare BioRNA-C bundles'));
 assert.ok(!customer.includes('Reduce scar volume by up to 95%'));
 console.log('Validated audience separation, clear retail prices, product quote routes and scoped offers.');
