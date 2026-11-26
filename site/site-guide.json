@@ -12,14 +12,14 @@
   },
   "products": [
     {
-      "name": "BioRNA Daily (Antiscar)",
+      "name": "BioRNA AntiScar",
       "discount_code": null,
-      "price_per_box": 300
+      "price_per_box": 500
     },
     {
       "name": "BioRNA-C",
-      "regular": 375,
-      "current_special": 375,
+      "regular": 500,
+      "current_special": 500,
       "offers": "Contact our team for current offers after submitting an inquiry."
     }
   ],

@@ -7,7 +7,7 @@ Use actual supplied products. Do not retouch scars or fabricate treatment outcom
 | Shot | What to capture | Placement |
 |---|---|---|
 |1|Both real boxes, front facing, next to their sealed pouches in daylight|Customer introduction; replace the concept duo render|
-|2|BioRNA Daily (Antiscar) actual box front and back, readable label|Its product detail page image gallery|
+|2|BioRNA AntiScar actual box front and back, readable label|Its product detail page image gallery|
 |3|BioRNA-C actual box front and back, readable label|Its product detail page image gallery|
 |4|Actual contents of each box, photographed separately, showing seven or eight sealed single-use units|Respective product detail page beside box contents|
 |5|A patch held by its edge in a clean hand, with packaging nearby; do not touch micro-tips|Customer how-it-works section; accurate size context|
