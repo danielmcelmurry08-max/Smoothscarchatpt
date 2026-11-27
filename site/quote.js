@@ -24,7 +24,7 @@ window.addEventListener('pageshow',()=>{const form=document.querySelector('[data
  const form=document.querySelector('[data-quote-form]');
  const summary=document.querySelector('#quote-product-summary');
  if(!form||!summary)return;
- const bundles={'BioRNA AntiScar':{2:{single:135,packs:{1:135}},8:{single:500,packs:{1:500,2:900,3:1250,4:1600}},24:{single:1250,packs:{1:1250,2:2250,3:3000}}},'BioRNA-C':{2:{single:135,packs:{1:135}},8:{single:500,packs:{1:500,2:900,3:1250,4:1600}},24:{single:1250,packs:{1:1250,2:2250,3:3000}}}};
+ const bundles={'BioRNA AntiScar':{2:{single:135,packs:{1:135}},8:{single:500,packs:{1:500,2:900,3:1250,4:1600}},24:{single:1150,packs:{1:1150,2:2250,3:3000}}},'BioRNA-C':{2:{single:135,packs:{1:135}},8:{single:500,packs:{1:500,2:900,3:1250,4:1600}},24:{single:1150,packs:{1:1150,2:2250,3:3000}}}};
  const money=n=>'$'+n.toLocaleString('en-US');
  const line=(product,size)=>'<p><strong>'+product+' — $'+bundles[product][size].single.toLocaleString('en-US')+'/box, '+size+' patches, twice weekly 8–12 hours.</strong></p>';
  const update=()=>{

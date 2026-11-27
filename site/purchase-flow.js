@@ -18,8 +18,8 @@
   setText('[data-review-quantity]', quantity ? quantity + (quantity === 1 ? ' box' : ' boxes') : 'Confirm with our team');
   setText('[data-review-contact]', fields.email.value);
   setText('[data-review-shipping]', [fields.country.value, fields.postal_code.value].filter(Boolean).join(' · ') || 'Confirm with our team');
-  setText('[data-review-price]', product ? '$' + (size === '24' ? '1,250' : size === '2' ? '135' : '500') + ' per box' : 'AntiScar $500 · BioRNA-C $500');
-  const prices = size === '24' ? [1250, 2250, 3000] : size === '2' ? [135] : [500, 900, 1250, 1600];
+  setText('[data-review-price]', product ? '$' + (size === '24' ? '1,150' : size === '2' ? '135' : '500') + ' per box' : 'AntiScar $500 · BioRNA-C $500');
+  const prices = size === '24' ? [1150, 2250, 3000] : size === '2' ? [135] : [500, 900, 1250, 1600];
   const maxQuantity = size === '24' ? 3 : size === '2' ? 1 : 4;
   const total = Number.isInteger(quantity) && quantity >= 1 && quantity <= maxQuantity && product ? prices[quantity - 1] : null;
   setText('[data-review-bundle]', total ? '$' + total.toLocaleString('en-US') + ' before shipping and tax' : 'Confirmed in your itemized quote');
